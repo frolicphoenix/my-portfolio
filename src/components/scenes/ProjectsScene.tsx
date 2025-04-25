@@ -4,6 +4,8 @@ import FilterTag from '../projects/FilterTag'
 import ProjectCard from '../projects/ProjectCard'
 import ProjectModal from '../projects/ProjectModal'
 import projects, { ProjectTool, Project, gameTools, webTools } from '../../data/project'
+import { Suspense } from 'react'
+import GalaxyStars from '../effects/GalaxyStars'
 
 const ProjectsScene = () => {
   const [gameFilter, setGameFilter] = useState<ProjectTool | 'all'>('all')
@@ -22,14 +24,21 @@ const ProjectsScene = () => {
   )
 
   return (
+    
     <motion.div 
-      className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]"
+      className="absolute inset-0 flex items-center justify-center"
       initial={{ opacity: 0, x: 100, rotateY: 10 }}
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-11/12 max-w-6xl h-4/5">
+      {/* Galaxy Background - Always Rendered */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
+          <GalaxyStars />
+        </Suspense>
+      </div>
         {/* Game Projects */}
         <div className="flex flex-col gap-5 p-6 rounded-xl bg-[#1e1e1e]/50 backdrop-blur-md h-full overflow-y-auto scrollbar">
           <h2 className="text-2xl font-semibold relative inline-block">

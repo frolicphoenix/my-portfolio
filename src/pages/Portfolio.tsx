@@ -1,13 +1,12 @@
-import { useState, Suspense, lazy } from 'react'
+
+import { useState, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ProjectsScene from '../components/scenes/ProjectsScene'
 import AboutScene from '../components/scenes/AboutScene'
 import SkillsScene from '../components/scenes/SkillsScene'
 import ContactScene from '../components/scenes/ContactScene'
 import Sparkles from '../components/effects/Sparkles'
-
-// Lazy load ThreeScene to improve initial load time
-const ThreeScene = lazy(() => import('../components/three/ThreeScene'))
+import GalaxyStars from '../components/effects/GalaxyStars'
 
 // Types
 type Scene = 'home' | 'projects' | 'about' | 'skills' | 'contact'
@@ -16,7 +15,16 @@ const Portfolio = () => {
   const [activeScene, setActiveScene] = useState<Scene>('home')
 
   return (
+    
     <div className="relative w-full h-full perspective-[1000px]">
+
+      {/* Galaxy Background - Always Rendered */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
+          <GalaxyStars />
+        </Suspense>
+      </div>
+
       {/* Universe Container */}
       <div className="relative w-full h-full transition-all duration-500 ease-in-out">
         
@@ -48,16 +56,12 @@ const Portfolio = () => {
           {activeScene === 'home' && (
             <motion.div
               key="home"
-              className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]"
+              className="absolute inset-0 flex items-center justify-center"
               initial={{ opacity: 0, x: 100, rotateY: 10 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               exit={{ opacity: 0, x: -100, rotateY: -10 }}
               transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
             >
-              {/* 3D Background */}
-              <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]"></div>}>
-                <ThreeScene />
-              </Suspense>
               
               <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl px-6">
                 <motion.h1 
