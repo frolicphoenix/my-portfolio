@@ -1,15 +1,26 @@
 import { motion } from 'framer-motion'
+import { Suspense } from 'react'
+import GalaxyStars from '../effects/GalaxyStars'
 
 const AboutScene = () => {
   return (
     <motion.div 
-      className="absolute inset-0 flex items-center justify-center bg-radial-gradient"
+      // className="absolute inset-0 flex items-center justify-center bg-radial-gradient"
+      className="absolute inset-0 overflow-y-auto px-4 sm:px-10 py-10 sm:py-20 flex flex-col items-center justify-center"
       initial={{ opacity: 0, x: 100, rotateY: 10 }}
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className="w-11/12 max-w-6xl h-4/5 bg-[#121212]/70 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row">
+
+        {/* Galaxy Background - Always Rendered */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
+            <GalaxyStars />
+          </Suspense>
+        </div>
+
         <div className="md:w-1/3 w-full h-64 md:h-full relative overflow-hidden">
           <img 
             src="/assets/img/pranjall.webp" 

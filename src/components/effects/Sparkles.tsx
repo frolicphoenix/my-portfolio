@@ -77,7 +77,7 @@ interface SparklesProps {
   className?: string
 }
 
-const Sparkles = ({ color = '#bbcf64', children, className = '' }: SparklesProps) => {
+const Sparkles = ({ color = '#FFFF00', children, className = '' }: SparklesProps) => {
   const [sparkles, setSparkles] = useState<SparkleProps[]>([])
   const prefersReducedMotion = useRef(false)
   

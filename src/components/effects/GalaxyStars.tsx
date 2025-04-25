@@ -1,4 +1,3 @@
-// import React from "react";
 import { useP5 } from "../../hooks/useP5";
 
 const GalaxyStars = () => {
@@ -9,7 +8,6 @@ const GalaxyStars = () => {
     const numNebula = 80;
     let auroraOffset = 0;
 
-    // ----- STAR CLASS -----
     class Star {
       x: number;
       y: number;
@@ -37,7 +35,6 @@ const GalaxyStars = () => {
       }
     }
 
-    // ----- NEBULA CLASS -----
     class Nebula {
       x: number;
       y: number;
@@ -89,7 +86,6 @@ const GalaxyStars = () => {
       }
     };
 
-    // ----- Aurora Effect -----
     const drawAurora = () => {
       p5.noStroke();
       // Olive-green aurora shade
@@ -110,7 +106,9 @@ const GalaxyStars = () => {
     };
 
     p5.draw = () => {
-      p5.background(5, 5, 20, 50);
+      // p5.background(5, 5, 20, 50);
+      
+      p5.background(8, 4, 16, 80);
 
 
       const offsetX = p5.map(p5.mouseX, 0, p5.width, -50, 50);

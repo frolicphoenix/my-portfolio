@@ -26,7 +26,8 @@ const ProjectsScene = () => {
   return (
     
     <motion.div 
-      className="absolute inset-0 flex items-center justify-center"
+      // className="absolute inset-0 flex items-center justify-center"
+      className="absolute inset-0 overflow-y-auto px-4 sm:px-10 py-10 sm:py-20 flex flex-col items-center justify-center"
       initial={{ opacity: 0, x: 100, rotateY: 10 }}
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
