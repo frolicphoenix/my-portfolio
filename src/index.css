@@ -1,0 +1,53 @@
+/* Custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* Base styles */
+html, body {
+  @apply bg-[#0a0a0a] text-[#f5f5f7] m-0 p-0 overflow-hidden;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  @apply h-full w-full;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#0a0a0a];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#88a035] rounded-md;
+}
+
+/* Custom scrollbar styles for Firefox */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #88a035 #0a0a0a;
+}
+
+/* Custom scrollbar styles for Chrome, Edge, and Safari */
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #88a035;
+  border-radius: 6px;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, rgba(30, 30, 30, 0.8), #0a0a0a);
+}
