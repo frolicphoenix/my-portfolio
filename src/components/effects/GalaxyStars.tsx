@@ -110,15 +110,12 @@ const GalaxyStars = () => {
     };
 
     p5.draw = () => {
-      // Use a transparent background to create a trailing effect
       p5.background(5, 5, 20, 50);
 
-      // ---------- Mouse Reactive Parallax ----------
-      // Calculate a slight offset based on mouse position
+
       const offsetX = p5.map(p5.mouseX, 0, p5.width, -50, 50);
       const offsetY = p5.map(p5.mouseY, 0, p5.height, -50, 50);
 
-     // ---------- Stars (Mouse Reactive Parallax) ----------
       p5.push();
       p5.translate(p5.width / 2 + offsetX, p5.height / 2 + offsetY);
       for (let s of stars) {
@@ -127,19 +124,16 @@ const GalaxyStars = () => {
       }
       p5.pop();
 
-
-      // ---------- Nebula Layers ----------
       p5.push();
+
       // They stay in the background without mouse offset
       for (let n of nebulaParticles) {
         n.update();
         n.show();
       }
       p5.pop();
-
-      // ---------- Aurora Waves ----------
       p5.push();
-      // Draw the aurora in the top region of the canvas
+
       p5.push();
       p5.translate(-p5.width / 2, -p5.height / 2);
       drawAurora();
