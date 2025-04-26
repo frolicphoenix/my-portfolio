@@ -16,8 +16,7 @@ const Portfolio = () => {
 
   return (
     
-    // <div className="relative w-full h-full perspective-[1000px]">
-    <div className="relative w-full min-h-screen h-[100svh] perspective-[1000px]">
+    <div className="relative w-full h-full perspective-[1000px]">
 
       {/* Galaxy Background - Always Rendered */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -30,25 +29,26 @@ const Portfolio = () => {
       <div className="relative w-full h-full transition-all duration-500 ease-in-out">
         
         {/* Navigation */}
-        {/* <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"> */}
-        <nav className="fixed bottom-[env(safe-area-inset-bottom,1.5rem)] left-1/2 -translate-x-1/2 flex gap-5 px-4 py-3 
-          bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg
-          max-w-[95vw] sm:max-w-fit
-        ">
+        <nav className="fixed bottom-15 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg">
           {[
-            { id: 'home', label: 'Home', icon: 'H' },
-            { id: 'projects', label: 'Projects', icon: 'P' },
-            { id: 'about', label: 'About', icon: 'A' },
-            { id: 'skills', label: 'Skills', icon: 'S' },
-            { id: 'contact', label: 'Contact', icon: 'C' }
+            { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
+            { id: 'projects', label: 'Projects', img: 'https://img.icons8.com/clouds/400/folder-invoices.png', icon: '📁' },
+            { id: 'about', label: 'About', img: 'https://img.icons8.com/clouds/400/about.png', icon: '💁🏻‍♀️' },
+            { id: 'skills', label: 'Skills', img: 'https://img.icons8.com/clouds/400/gear.png', icon: '⚙️' },
+            { id: 'contact', label: 'Contact', img: 'https://img.icons8.com/clouds/400/contact.png', icon: '✉️' }
           ].map((item) => (
             <button
               key={item.id}
-              className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 relative group
-                ${activeScene === item.id ? 'bg-[#88a035] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
+              className={`w-13 h-13 flex items-center justify-center rounded-full transition-all duration-300 relative group
+                ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
               onClick={() => setActiveScene(item.id as Scene)}
             >
-              {item.icon}
+              {/* {item.icon} */}
+              <img
+                src={item.img}
+                alt={item.label}
+                className="w-15 h-15 object-contain"
+              />
               <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs opacity-0 scale-0 transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
                 {item.label}
               </span>
@@ -61,19 +61,16 @@ const Portfolio = () => {
           {activeScene === 'home' && (
             <motion.div
               key="home"
-              // className="absolute inset-0 flex items-center justify-center"
-              className="absolute inset-0 overflow-y-auto px-4 sm:px-10 py-10 sm:py-20 flex flex-col items-center justify-center"
+              className="absolute inset-0 flex items-center justify-center"
               initial={{ opacity: 0, x: 100, rotateY: 10 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               exit={{ opacity: 0, x: -100, rotateY: -10 }}
               transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
             >
               
-              <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-xl px-4 sm:px-6">
-              
+              <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl px-6">
                 <motion.h1 
-                    // className="text-5xl font-bold mb-5"
-                    className="text-4xl sm:text-5xl font-bold mb-4 text-center"
+                    className="text-5xl font-bold mb-5"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.8 }}
@@ -85,21 +82,20 @@ const Portfolio = () => {
                     </Sparkles>
                 </motion.h1>
                 <motion.h2 
-                  // className="text-2xl mb-6 opacity-80"
-                  className="text-lg sm:text-2xl mb-4 text-center opacity-80"
+                  className="text-2xl mb-6 opacity-80 text-amber-300"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 0.8 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
                 >
-                  Game Designer & Full Stack Developer
+                  ✨ Creative Technologist ✨
                 </motion.h2>
                 <motion.p 
-                  className="mb-8"
+                  className="mb-10"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
                 >
-                  I craft interactive experiences at the intersection of storytelling, design, and technology
+                  A relentless idea machine who live at the crossroads of storytelling, design, and technology. I have 3+ years' experience building Video Games, Apps, Websites and Tools.
                 </motion.p>
                 <motion.div 
                   className="flex gap-5 mt-10"
@@ -108,18 +104,29 @@ const Portfolio = () => {
                   transition={{ delay: 0.8, duration: 0.8 }}
                 >
                   {[
-                    { href: "mailto:pranjalmlokhande@gmail.com", icon: "✉️" },
-                    { href: "https://www.linkedin.com/in/pranjallokhande/", icon: "in" },
-                    { href: "https://github.com/frolicphoenix", icon: "GH" },
-                    { href: "https://www.instagram.com/theunrealdesigner/", icon: "IG" },
-                    { href: "https://medium.com/@pranjalmlokhande", icon: "M" }
+                    { href: "mailto:pranjalmlokhande@gmail.com", img: "https://img.icons8.com/bubbles/200/apple-mail.png", icon: "M" },
+                    { href: "https://www.linkedin.com/in/pranjallokhande/", img: "https://img.icons8.com/bubbles/200/linkedin.png", icon: "L" },
+                    { href: "https://github.com/frolicphoenix", img: "https://img.icons8.com/bubbles/200/github.png", icon: "G" },
+                    { href: "https://www.youtube.com/@theunrealdesigner", img: "https://img.icons8.com/bubbles/200/youtube-squared.png", icon: "Y" },
+                    { href: "https://medium.com/@pranjalmlokhande", img: "https://img.icons8.com/bubbles/200/medium-new.png", icon: "M" },
+                    { href: "https://www.instagram.com/theunrealdesigner/", img: "https://img.icons8.com/bubbles/200/instagram-new--v2.png", icon: "I" }
                   ].map((link, i) => (
                     <a 
                       key={i} 
                       href={link.href} 
-                      className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full text-[#f5f5f7] transition-all duration-300 hover:bg-[#88a035] hover:-translate-y-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full text-[#f5f5f7] transition-all duration-300 hover:bg-[#88a035] hover:-translate-y-1 overflow-hidden"
                     >
-                      {link.icon}
+                      {link.img ? (
+                        <img 
+                          src={link.img}
+                          alt="icon"
+                          className="w-15 h-15 object-contain"
+                        />
+                      ) : (
+                        link.icon
+                      )}
                     </a>
                   ))}
                 </motion.div>

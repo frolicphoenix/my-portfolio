@@ -26,7 +26,7 @@ const ContactScene = () => {
 
   return (
     <motion.div
-      className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-[#0a0a0a]/95 to-[#0a0a0a]/85 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')] bg-cover"
+      className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-[#0a0a0a]/95 to-[#0a0a0a]/85 bg-[url('assets/img/ss.png')] bg-cover"
       initial={{ opacity: 0, x: 100, rotateY: 10 }}
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: -10 }}

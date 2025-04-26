@@ -61,7 +61,7 @@ const projects: Project[] = [
   {
     id: 'arcane-odyssey',
     title: 'Arcane Odyssey',
-    thumb: '/assets/img/game/aRCANEoDYSSEY/arcaneodyssey.webp',
+    thumb: 'https://www.dropbox.com/scl/fi/iirjc7cy8l5lo3rafdtk6/ao.mp4?rlkey=amtguws2frifn51pngsrrk0c2&st=vzm2hjiz&raw=1',
     tags: [
       { label: 'Game Design' },
       { label: 'Level Design' },
