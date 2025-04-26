@@ -65,7 +65,7 @@ const ContactScene = () => {
                     <img
                       src={link.img}
                       alt={link.label}
-                      className="w-8 h-8 object-contain"
+                      className="w-10 h-10 object-contain"
                     />
                   ) : (
                     link.icon
@@ -100,6 +100,14 @@ const ContactScene = () => {
               className="bg-transparent border border-[#88a035]/50 rounded p-3 focus:outline-none focus:border-[#88a035] transition-all"
             />
 
+            <input 
+              type="text" 
+              name="currentgame" 
+              placeholder="What game are you currently playing?" 
+              required
+              className="bg-transparent border border-[#88a035]/50 rounded p-3 focus:outline-none focus:border-[#88a035] transition-all"
+            />
+
             {/* Message Field */}
             <textarea 
               name="message" 
@@ -116,7 +124,7 @@ const ContactScene = () => {
             {/* Submit Button */}
             <button 
               type="submit"
-              className="bg-[#88a035] text-[#0a0a0a] rounded p-3 font-bold hover:bg-[#bbcf64] transition-all"
+              className="bg-[#88a035] text-amber-300 rounded p-3 font-bold hover:bg-[#bbcf64] transition-all"
             >
               Send Message
             </button>
@@ -126,7 +134,7 @@ const ContactScene = () => {
 
         {/* Footer */}
         <motion.div 
-          className="mt-16 text-sm opacity-60"
+          className="mt-20 text-bold opacity-60"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.9, transition: { delay: 0.8 } }}
         >
