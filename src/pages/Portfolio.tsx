@@ -39,7 +39,7 @@ const Portfolio = () => {
           ].map((item) => (
             <button
               key={item.id}
-              className={`w-13 h-13 flex items-center justify-center rounded-full transition-all duration-300 relative group
+              className={`w-12 h-12 flex items-center justify-center rounded transition-all duration-300 relative group
                 ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
               onClick={() => setActiveScene(item.id as Scene)}
             >
@@ -109,7 +109,7 @@ const Portfolio = () => {
                     { href: "https://github.com/frolicphoenix", img: "https://img.icons8.com/bubbles/200/github.png", icon: "G" },
                     { href: "https://www.youtube.com/@theunrealdesigner", img: "https://img.icons8.com/bubbles/200/youtube-squared.png", icon: "Y" },
                     { href: "https://medium.com/@pranjalmlokhande", img: "https://img.icons8.com/bubbles/200/medium-new.png", icon: "M" },
-                    { href: "https://www.instagram.com/theunrealdesigner/", img: "https://img.icons8.com/bubbles/200/instagram-new--v2.png", icon: "I" }
+                    { href: "https://theunrealdesigner.tumblr.com/", img: "https://img.icons8.com/bubbles/200/tumblr.png", icon: "T" }
                   ].map((link, i) => (
                     <a 
                       key={i} 

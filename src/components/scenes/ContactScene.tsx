@@ -3,34 +3,40 @@ import { motion } from 'framer-motion'
 const ContactScene = () => {
   const contactLinks = [
     {
-      icon: '📄',
+      icon: 'R',
       img: "https://img.icons8.com/bubbles/200/resume.png",
-      label: 'DOWNLOAD RESUME',
+      label: 'Download Resume',
       href: '/resume/pranjallokhande_resume_FullStack.pdf'
     },
     {
-      icon: '✉️',
+      icon: 'M',
       img: 'https://img.icons8.com/bubbles/200/apple-mail.png',
-      label: 'pranjalmlokhande@gmail.com',
+      label: 'E-Mail',
       href: 'mailto:pranjalmlokhande@gmail.com'
     },
     {
-      icon: 'in',
+      icon: 'L',
       img: "https://img.icons8.com/bubbles/200/linkedin.png",
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/pranjallokhande/'
     },
     {
-      icon: 'GH',
+      icon: 'G',
       img: "https://img.icons8.com/bubbles/200/github.png",
       label: 'GitHub',
       href: 'https://github.com/frolicphoenix'
+    },
+    {
+      icon: 'T',
+      img: "https://img.icons8.com/bubbles/200/tumblr.png",
+      label: 'Tumblr',
+      href: 'https://theunrealdesigner.tumblr.com/'
     }
   ];
 
   return (
     <motion.div
-      className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-[#0a0a0a]/95 to-[#0a0a0a]/85 bg-[url('assets/img/ss.png')] bg-cover"
+      className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-[#0a0a0a]/95 to-[#0a0a0a]/85 bg-[url('https://www.dropbox.com/scl/fi/0b36orybelijtfsah63fo/ss.png?rlkey=sbqmki7mb0tsw1n4jyo02szwx&st=9nt86hpo&raw=1')] bg-cover"
       initial={{ opacity: 0, x: 100, rotateY: 10 }}
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
@@ -45,14 +51,14 @@ const ContactScene = () => {
         <div className="flex flex-col md:flex-row gap-10 w-full justify-center items-start">
 
           {/* Contact Links */}
-          <div className="flex flex-col w-full max-w-md gap-4">
+          <div className="flex flex-col w-70 max-w-md gap-4">
             {contactLinks.map((link, index) => (
               <motion.a
                 key={index}
                 href={link.href}
                 target={link.href.startsWith('mailto:') ? undefined : '_blank'}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 bg-[#1e1e1e]/70 backdrop-blur-md p-4 rounded-lg text-amber-300 transition-all duration-300 hover:bg-[#88a035] hover:translate-x-2"
+                className="flex items-center gap-4 bg-[#1e1e1e]/70 backdrop-blur-md p-1.5 rounded-lg text-amber-300 transition-all duration-300 hover:bg-[#88a035] hover:translate-x-2"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ 
                   opacity: 1, 
@@ -60,12 +66,12 @@ const ContactScene = () => {
                   transition: { delay: index * 0.1 + 0.2 } 
                 }}
               >
-                <div className="w-10 h-10 flex items-center justify-center">
+                <div className="w-8 h-8 flex items-center justify-center">
                   {link.img ? (
                     <img
                       src={link.img}
                       alt={link.label}
-                      className="w-10 h-10 object-contain"
+                      className="w-12 h-12 object-contain"
                     />
                   ) : (
                     link.icon
@@ -78,7 +84,7 @@ const ContactScene = () => {
 
           {/* Contact Form */}
           <form 
-            action="73f932826fb3857e7a5cd2ae4abe7d3c" 
+            action="https://formsubmit.co/pranjalmlokhande@gmail.com" 
             method="POST"
             className="flex flex-col gap-4 w-full max-w-md bg-[#1e1e1e]/70 backdrop-blur-md p-6 rounded-lg text-white shadow-lg"
           >
@@ -86,7 +92,7 @@ const ContactScene = () => {
             <input 
               type="text" 
               name="name" 
-              placeholder="Your Name" 
+              placeholder="Name" 
               required
               className="bg-transparent border border-[#88a035]/50 rounded p-3 focus:outline-none focus:border-[#88a035] transition-all"
             />
@@ -95,15 +101,16 @@ const ContactScene = () => {
             <input 
               type="email" 
               name="email" 
-              placeholder="Your Email" 
+              placeholder="Email" 
               required
               className="bg-transparent border border-[#88a035]/50 rounded p-3 focus:outline-none focus:border-[#88a035] transition-all"
             />
 
+            {/* Email Field */}
             <input 
-              type="text" 
+              type="message" 
               name="currentgame" 
-              placeholder="What game are you currently playing?" 
+              placeholder="Current game you're playing OR any fun fact?" 
               required
               className="bg-transparent border border-[#88a035]/50 rounded p-3 focus:outline-none focus:border-[#88a035] transition-all"
             />
@@ -111,7 +118,7 @@ const ContactScene = () => {
             {/* Message Field */}
             <textarea 
               name="message" 
-              placeholder="Your Message" 
+              placeholder="Message" 
               rows={5}
               required
               className="bg-transparent border border-[#88a035]/50 rounded p-3 focus:outline-none focus:border-[#88a035] transition-all resize-none"
