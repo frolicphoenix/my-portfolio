@@ -55,7 +55,9 @@ const Portfolio = () => {
             </button>
           ))}
         </nav>
-
+      </div>
+      
+      <div>
         {/* Scenes */}
         <AnimatePresence mode="wait">
           {activeScene === 'home' && (
