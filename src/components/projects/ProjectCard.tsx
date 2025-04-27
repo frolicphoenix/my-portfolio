@@ -8,10 +8,10 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   return (
     <div 
-      className="grid grid-cols-[150px_1fr] gap-5 bg-[#121212]/60 rounded-lg p-4 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:bg-[#1e1e1e]/80 hover:shadow-lg"
+      className="grid grid-cols-[200px_1fr] gap-5 bg-[#121212]/60 rounded-lg p-4 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:bg-[#1e1e1e]/80 hover:shadow-lg"
       onClick={onClick}
     >
-      <div className="w-[150px] h-30 rounded overflow-hidden">
+      <div className="w-[200px] h-30 rounded overflow-hidden">
         {/* <img 
           src={project.thumb} 
           alt={project.title} 

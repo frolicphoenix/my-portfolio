@@ -32,7 +32,7 @@ const ProjectsScene = () => {
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-11/12 max-w-6xl h-4/5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-12/13 max-w-400 h-4/5">
         {/* Galaxy Background - Always Rendered */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
@@ -41,8 +41,9 @@ const ProjectsScene = () => {
         </div>
         {/* Game Projects */}
         <div className="flex flex-col gap-5 p-6 rounded-xl bg-[#1e1e1e]/50 backdrop-blur-md h-full overflow-y-auto scrollbar">
+          
           <h2 className="text-2xl font-semibold relative inline-block">
-            Game Projects
+            Games
             <div className="absolute h-[3px] w-12 bg-[#506b2d] rounded left-0 -bottom-2"></div>
           </h2>
           
@@ -81,7 +82,7 @@ const ProjectsScene = () => {
         {/* Web Projects */}
         <div className="flex flex-col gap-5 p-6 rounded-xl bg-[#1e1e1e]/50 backdrop-blur-md h-full overflow-y-auto scrollbar">
           <h2 className="text-2xl font-semibold relative inline-block">
-            Web Projects
+            Apps
             <div className="absolute h-[3px] w-12 bg-[#88a035] rounded left-0 -bottom-2"></div>
           </h2>
           

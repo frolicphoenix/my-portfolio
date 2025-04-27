@@ -67,7 +67,7 @@ const projects: Project[] = [
       { label: 'Level Design' },
       { label: 'UEFN' }
     ],
-    description: 'A gacha adventure multiplayer Fortnite Island with team-based gameplay.',
+    description: 'A gacha adventure multiplayer Fortnite Island where the players compete in teams to collect items and keys to open a portal and escape the magical island.',
     tools: ['fortnite', 'level-design', 'multiplayer'],
     category: 'game',
     media: '/assets/img/game/aRCANEoDYSSEY/arcaneodyssey.webp',
@@ -85,13 +85,13 @@ const projects: Project[] = [
   {
     id: 'wagtd',
     title: "We're All Going To Die!",
-    thumb: '/assets/img/game/wagtd/wagtd.webp',
+    thumb: 'https://www.dropbox.com/scl/fi/qftyxe9w7sfnt5agzeurz/wagtd.mp4?rlkey=zwgey5kl9z4wa2jqecnbpc6rw&st=5phqq2cx&raw=1',
     tags: [
       { label: 'Level Design' },
       { label: 'Unreal Engine' },
       { label: 'Blueprints' }
     ],
-    description: 'A top-down cooperative twin-stick shooter with waves of enemies.',
+    description: 'A top down cooperative twin stick shooter in which the players face off against waves of enemies.',
     tools: ['unreal-engine', 'level-design', 'blueprints', 'multiplayer'],
     category: 'game',
     media: '/assets/img/game/wagtd/wagtd.webp',
@@ -109,7 +109,7 @@ const projects: Project[] = [
   {
     id: 'nyxr-bot',
     title: 'NYXR Bot',
-    thumb: '/assets/img/web/nyxrbot/nyxr-bot.png',
+    thumb: 'https://www.dropbox.com/scl/fi/9rydl28tg3zr28wdnt6nv/nyxr-bot.mp4?rlkey=wzt4u1mk9bbk7acfznxdk39xj&st=fjngntoh&raw=1',
     tags: [
       { label: 'React', isWebTag: true },
       { label: 'Tailwind CSS', isWebTag: true },
@@ -119,7 +119,7 @@ const projects: Project[] = [
     tools: ['react', 'javascript', 'tailwind'],
     category: 'web',
     media: '/assets/img/web/nyxrbot/nyxr-bot.mp4',
-    detailedDescription: 'An interactive terminal-style interface built with React and Tailwind CSS that simulates a command-line portfolio experience.',
+    detailedDescription: 'An interactive terminal-style interface built with React and Tailwind CSS that simulates a command-line portfolio.',
     technologies: 'React, Tailwind CSS, JavaScript ES6+, React Hooks',
     features: [
       'Command-line interface simulation',
@@ -133,13 +133,13 @@ const projects: Project[] = [
   {
     id: 'virtual-zoo',
     title: 'Virtual Zoo',
-    thumb: '/assets/img/web/virtualzoo/vzoo.png',
+    thumb: 'https://www.dropbox.com/scl/fi/sozpwxykpepl3806vx9ac/vzoo.mp4?rlkey=108ob8rlotqxzod1legswvhe8&st=xxar4x1g&raw=1',
     tags: [
       { label: 'Go', isWebTag: true },
       { label: 'Python', isWebTag: true },
       { label: 'YAML', isWebTag: true }
     ],
-    description: 'A minimal Infrastructure as Code (IaC) experiment simulating pets as virtual machines.',
+    description: 'A minimal Infrastructure as Code (IaC) experiment where pets are deployed, aged, and cared for like virtual machines in a cloud.',
     tools: ['go', 'python'],
     category: 'web',
     media: '/assets/img/web/virtualzoo/vzoo.mp4',
@@ -157,13 +157,13 @@ const projects: Project[] = [
   {
     id: 'astronomy-books',
     title: 'Astronomy in Books',
-    thumb: '/assets/img/web/astronomyinbooks/aib.png',
+    thumb: 'https://www.dropbox.com/scl/fi/3jwv4q4rmf972hmagaimp/aib.mp4?rlkey=zd82071rib4ns5qjjfouwjkoo&st=1gkv8y57&raw=1',
     tags: [
       { label: 'JavaScript', isWebTag: true },
       { label: 'Google Books API', isWebTag: true },
       { label: 'NASA API', isWebTag: true }
     ],
-    description: 'A platform to discover books related to astronomical events using NASA data.',
+    description: "A platform to discover books related to astronomical events by tapping into NASA's astronomical data and Google Books' vast library.",
     tools: ['javascript', 'api'],
     category: 'web',
     media: '/assets/img/web/astronomyinbooks/aib.mp4',
@@ -181,12 +181,12 @@ const projects: Project[] = [
   {
     id: 'pokemon-tracker',
     title: 'Pokémon Unite Build Tracker',
-    thumb: '/assets/img/web/pokemonunitebuild/walkthrupoke.png',
+    thumb: 'https://www.dropbox.com/scl/fi/lfdbtzg243ou6jti1jbm5/walkthrupoke.mp4?rlkey=gmkgvgvtct6usp7jp9cz0j521&st=vvrin2f3&raw=1',
     tags: [
       { label: 'C#', isWebTag: true },
       { label: 'ASP.NET MVC', isWebTag: true }
     ],
-    description: 'An ASP.NET Core Web App for tracking Pokémon builds and stats.',
+    description: 'An ASP.NET Core Web App that helps users to check the stats of their pokémon by attaching held items and a battle item and save the builds.',
     tools: ['csharp', 'aspnet'],
     category: 'web',
     media: '/assets/img/web/pokemonunitebuild/walkthrupoke.mp4',
