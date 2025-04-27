@@ -2,12 +2,12 @@ import { motion } from 'framer-motion'
 
 const ContactScene = () => {
   const contactLinks = [
-    {
-      icon: 'R',
-      img: "https://img.icons8.com/bubbles/200/resume.png",
-      label: 'Download Resume',
-      href: '/resume/pranjallokhande_resume_FullStack.pdf'
-    },
+    // {
+    //   icon: 'R',
+    //   img: "https://img.icons8.com/bubbles/200/resume.png",
+    //   label: 'Download Resume',
+    //   href: '/resume/pranjallokhande_resume_FullStack.pdf'
+    // },
     {
       icon: 'M',
       img: 'https://img.icons8.com/bubbles/200/apple-mail.png',

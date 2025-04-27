@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import SkillItem from '../../components/skills/SkillItem'
 import { skills, categoryTitles } from '../../data/skills'
+import { Suspense } from 'react'
+import GalaxyStars from '../effects/GalaxyStars'
 
 const SkillsScene = () => {
   // Group skills by category
@@ -35,13 +37,19 @@ const SkillsScene = () => {
 
   return (
     <motion.div 
-      className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]"
+      className="absolute inset-0 flex items-center justify-center "
       initial={{ opacity: 0, x: 100, rotateY: 10 }}
       animate={{ opacity: 1, x: 0, rotateY: 0 }}
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 max-w-6xl h-4/5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-11/12 max-w-7xl h-4/5">
+        {/* Galaxy Background - Always Rendered */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
+            <GalaxyStars />
+          </Suspense>
+        </div>
         {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
           <div 
             key={category}
@@ -53,14 +61,14 @@ const SkillsScene = () => {
             </h2>
             
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              className="grid grid-cols-2 md:grid-cols-2 gap-2"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               {categorySkills.map((skill, index) => (
                 <motion.div key={index} variants={itemVariants}>
-                  <SkillItem icon={skill.icon} name={skill.name} />
+                  <SkillItem icon={skill.icon} name={skill.name} img={skill.img} />
                 </motion.div>
               ))}
             </motion.div>
