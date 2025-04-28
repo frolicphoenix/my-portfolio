@@ -34,13 +34,17 @@ export interface Project {
   technologies: string;
   features: string[];
   github: string | null;
+  steam: string | null;
   liveDemo: string | null;
+  designDoc: string | null;
+  medium: string | null;
+  youtube: string | null;
+  bgimg: string | null;
 }
 
 export const gameTools: { id: ProjectTool; label: string }[] = [
   { id: 'unreal-engine', label: 'Unreal Engine' },
   { id: 'fortnite', label: 'UEFN' },
-  { id: 'level-design', label: 'Level Design' },
   { id: 'blueprints', label: 'Blueprints' },
   { id: 'multiplayer', label: 'Multiplayer' },
   { id: 'unity', label: 'Unity' }
@@ -65,13 +69,14 @@ const projects: Project[] = [
     tags: [
       { label: 'Game Design' },
       { label: 'Level Design' },
-      { label: 'UEFN' }
+      { label: 'UEFN' },
+      { label: 'Verse' }
     ],
     description: 'A gacha adventure multiplayer Fortnite Island where the players compete in teams to collect items and keys to open a portal and escape the magical island.',
     tools: ['fortnite', 'level-design', 'multiplayer'],
     category: 'game',
     media: '/assets/img/game/aRCANEoDYSSEY/arcaneodyssey.webp',
-    detailedDescription: 'A gacha-based, team-versus-team adventure set on a mystical Fortnite island. Players compete to explore, collect, and survive through three thrilling levels.',
+    detailedDescription: 'Arcane Odyssey is a gacha-based, team-versus-team adventure set on a mystical Fortnite island. In this 2v2 escape challenge, players compete to explore, collect, and survive through three thrilling levels. Starting on a lush forest island, teams gather materials, solve riddles, and teleport to magical biomes to earn Golden Keys. With keys in hand, they descend into a treacherous underground labyrinth filled with monsters, traps, and mind-bending puzzles. Only by collecting artifacts and regrouping at the exit can they move forward.',
     technologies: 'Unreal Editor for Fortnite (UEFN), Level Design, Game Design',
     features: [
       'Multiple biomes to explore - Greenland, Desert and Iceland',
@@ -80,12 +85,17 @@ const projects: Project[] = [
       'Expandable to play in Co-op mode'
     ],
     github: null,
-    liveDemo: 'https://www.unrealengine.com/en-US/blog/check-out-the-sizzle-reel-from-the-most-recent-women-creators-program'
+    steam: null,
+    liveDemo: 'https://www.unrealengine.com/en-US/blog/check-out-the-sizzle-reel-from-the-most-recent-women-creators-program#:~:text=4176%2D9656%2D1350-,Arcane%20Odyssey,-Harvest%20the%20wonders',
+    designDoc: null,
+    medium: null,
+    youtube: null,
+    bgimg: 'https://www.dropbox.com/scl/fi/cdi4dkheckowcso9taq9o/arcaneodyssey.webp?rlkey=qjfo9ktcjzkv2qowu0etl5gag&st=27cn2qv7&raw=1'
   },
   {
     id: 'wagtd',
     title: "We're All Going To Die!",
-    thumb: 'https://www.dropbox.com/scl/fi/qftyxe9w7sfnt5agzeurz/wagtd.mp4?rlkey=zwgey5kl9z4wa2jqecnbpc6rw&st=5phqq2cx&raw=1',
+    thumb: 'https://www.dropbox.com/scl/fi/42ya3asxdutrz5uqg736y/wagtd-v.mp4?rlkey=8lawh05nswwthg9zos9b53wfk&st=cmqmdb15&raw=1',
     tags: [
       { label: 'Level Design' },
       { label: 'Unreal Engine' },
@@ -95,7 +105,7 @@ const projects: Project[] = [
     tools: ['unreal-engine', 'level-design', 'blueprints', 'multiplayer'],
     category: 'game',
     media: '/assets/img/game/wagtd/wagtd.webp',
-    detailedDescription: 'A top-down co-op twin-stick shooter where players battle waves of diverse enemies, from bomb-rushing robots to towering lizard foes.',
+    detailedDescription: 'We’re All Going To Die is a top-down co-op twin-stick shooter where players battle waves of diverse enemies, from bomb-rushing robots to towering lizard foes. Bosses with unique abilities add to the challenge, featuring both ranged and melee attacks. Players can unlock and upgrade perks to stay alive as the waves grow increasingly intense.',
     technologies: 'Unreal Engine, Blueprints, Level Design',
     features: [
       'Multiple unique levels with different gameplay mechanics',
@@ -104,7 +114,12 @@ const projects: Project[] = [
       'Co-op gameplay for team survival'
     ],
     github: null,
-    liveDemo: 'https://store.steampowered.com/app/1457140/Were_All_Going_To_Die/'
+    liveDemo: null,
+    steam: 'https://store.steampowered.com/app/1457140/Were_All_Going_To_Die/',
+    designDoc: null,
+    medium: null,
+    youtube: 'https://www.youtube.com/embed/V3H1z7Z91Ps?si=GzumgrL1NcsGZyXE',
+    bgimg: 'https://www.dropbox.com/scl/fi/t5h6dsiozwjjychl3nyyg/wagtd.webp?rlkey=raplh8xikbe0908sroa3n77ud&raw=1'
   },
   {
     id: 'nyxr-bot',
@@ -118,8 +133,8 @@ const projects: Project[] = [
     description: 'An interactive terminal-style interface simulating a command-line portfolio.',
     tools: ['react', 'javascript', 'tailwind'],
     category: 'web',
-    media: '/assets/img/web/nyxrbot/nyxr-bot.mp4',
-    detailedDescription: 'An interactive terminal-style interface built with React and Tailwind CSS that simulates a command-line portfolio.',
+    media: 'https://www.dropbox.com/scl/fi/rmlkl95lmzfwjk9zea65d/nyxr-bot.webm?rlkey=xxrpxa5z30lutcyijklr9mlfg&st=w4dz7arc&raw=1',
+    detailedDescription: 'NYXR Bot is an interactive terminal-style interface built with React and Tailwind CSS that simulates a command-line portfolio.',
     technologies: 'React, Tailwind CSS, JavaScript ES6+, React Hooks',
     features: [
       'Command-line interface simulation',
@@ -128,7 +143,12 @@ const projects: Project[] = [
       'Custom terminal animations'
     ],
     github: 'https://github.com/frolicphoenix/nyxr-bot',
-    liveDemo: 'https://bot.pranjallokhande.com/'
+    steam: null,
+    liveDemo: 'https://bot.pranjallokhande.com/',
+    designDoc: null,
+    medium: null,
+    youtube: null,
+    bgimg: null
   },
   {
     id: 'virtual-zoo',
@@ -143,7 +163,7 @@ const projects: Project[] = [
     tools: ['go', 'python'],
     category: 'web',
     media: '/assets/img/web/virtualzoo/vzoo.mp4',
-    detailedDescription: 'A minimal Infrastructure as Code (IaC) experiment where pets are deployed, aged, and cared for like virtual machines in a cloud environment.',
+    detailedDescription: 'Virtual Zoo is a minimal Infrastructure as Code (IaC) experiment where pets are deployed, aged, and cared for like virtual machines in a cloud.',
     technologies: 'Go, Python, YAML, HTTP (REST), Mutex',
     features: [
       'Infrastructure as Code (IaC) model',
@@ -152,7 +172,12 @@ const projects: Project[] = [
       'Concurrent processing with proper synchronization'
     ],
     github: 'https://github.com/frolicphoenix/virtualzoo',
-    liveDemo: null
+    steam: null,
+    liveDemo: null,
+    designDoc: null,
+    medium: null,
+    youtube: null,
+    bgimg: null
   },
   {
     id: 'astronomy-books',
@@ -176,7 +201,12 @@ const projects: Project[] = [
       'Responsive design for all devices'
     ],
     github: 'https://github.com/frolicphoenix/astronomy-in-books',
-    liveDemo: 'https://astronomy-in-books.vercel.app/'
+    steam: null,
+    liveDemo: 'https://astronomy-in-books.vercel.app/',
+    designDoc: null,
+    medium: null,
+    youtube: null,
+    bgimg: null
   },
   {
     id: 'pokemon-tracker',
@@ -190,7 +220,7 @@ const projects: Project[] = [
     tools: ['csharp', 'aspnet'],
     category: 'web',
     media: '/assets/img/web/pokemonunitebuild/walkthrupoke.mp4',
-    detailedDescription: 'An ASP.NET Core Web App that helps users to check the stats of their pokémon by attaching held items and a battle item and save the builds.',
+    detailedDescription: 'Pokémon Unite Build Tracker is a web application created using ASP.NET Core MVC to help players optimize their gameplay in Pokémon Unite, a 5v5 MOBA where players control Pokémon with unique abilities and equip three held items pre-game to enhance their stats. The app allows users to create, view, and manage builds for various Pokémon, offering a personalized alternative to external resources like UniteDB. Designed as a mockup, it combines gaming strategy with web development to provide a streamlined solution for tracking and experimenting with item combinations.',
     technologies: 'C#, ASP.NET MVC, Entity Framework, LINQ',
     features: [
       'Track and save custom Pokémon builds',
@@ -199,7 +229,12 @@ const projects: Project[] = [
       'User-friendly interface for build management'
     ],
     github: 'https://github.com/frolicphoenix/PokemonUniteBuildTracker_PassionProject',
-    liveDemo: null
+    steam: null,
+    liveDemo: null,
+    designDoc: 'https://docs.google.com/document/d/e/2PACX-1vSJkgj9lxDNcYDl8PptKUE8WQK-4d3pG1OIHi1Vtru21Sc5mjUfLIukphLYuzSGPd5QLS1u_h-48JB4/pub',
+    medium: null,
+    youtube: 'https://www.youtube.com/embed/48aqOM84CMU?si=fe-8fyQcnYkym5H0',
+    bgimg: null
   }
 ];
 

@@ -46,6 +46,50 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
           ))}
         </div>
         <p className="text-sm opacity-80">{project.description}</p>
+        <div className="flex mt-1">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="https://img.icons8.com/dusk/200/github.png"
+                alt="GitHub"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+          {project.liveDemo && (
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="https://img.icons8.com/dusk/64/internet--v1.png"
+                alt="Live Demo"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+          {project.steam && (
+            <a
+              href={project.steam}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="https://img.icons8.com/plasticine/400/steam.png"
+                alt="Steam"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   )
