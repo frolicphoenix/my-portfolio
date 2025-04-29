@@ -33,6 +33,7 @@ export interface Project {
   detailedDescription: string;
   technologies: string;
   features: string[];
+  responsibilities: string[] | null;
   github: string | null;
   steam: string | null;
   liveDemo: string | null;
@@ -40,6 +41,11 @@ export interface Project {
   medium: string | null;
   youtube: string | null;
   bgimg: string | null;
+  genre: string | null;
+  platform: string | null;
+  teamsize: string | null;
+  duration: string | null;
+  released: string | null;
 }
 
 export const gameTools: { id: ProjectTool; label: string }[] = [
@@ -84,13 +90,23 @@ const projects: Project[] = [
       'Solve puzzles, avoid traps, fight monsters and escape the maze',
       'Expandable to play in Co-op mode'
     ],
+    responsibilities: [
+      'Implementing navigation systems and gameplay features',
+      'Designing an immersive adventure experience with exploration-focused mechanics',
+      'Balancing creative design and technical execution, and collaborating with the team to iterate on story-driven levels'
+    ],
     github: null,
     steam: null,
     liveDemo: 'https://www.unrealengine.com/en-US/blog/check-out-the-sizzle-reel-from-the-most-recent-women-creators-program#:~:text=4176%2D9656%2D1350-,Arcane%20Odyssey,-Harvest%20the%20wonders',
     designDoc: null,
     medium: null,
     youtube: null,
-    bgimg: 'https://www.dropbox.com/scl/fi/cdi4dkheckowcso9taq9o/arcaneodyssey.webp?rlkey=qjfo9ktcjzkv2qowu0etl5gag&st=27cn2qv7&raw=1'
+    bgimg: 'https://www.dropbox.com/scl/fi/cdi4dkheckowcso9taq9o/arcaneodyssey.webp?rlkey=qjfo9ktcjzkv2qowu0etl5gag&st=27cn2qv7&raw=1',
+    genre: 'Fortnite, Multiplayer, Adventure',
+    platform: 'PC',
+    duration: '2 months',
+    teamsize: '4',
+    released: null
   },
   {
     id: 'wagtd',
@@ -113,13 +129,23 @@ const projects: Project[] = [
       'Unlock and upgrade perks to stay alive',
       'Co-op gameplay for team survival'
     ],
+    responsibilities: [
+      'Creating Level Blockouts for rapid prototyping and storytelling POIs',
+      'Design & implement unique and different systems for each level',
+      'Populating the levels with environment props for a better gameplay experience and visual feel'
+    ],
     github: null,
     liveDemo: null,
     steam: 'https://store.steampowered.com/app/1457140/Were_All_Going_To_Die/',
     designDoc: null,
     medium: null,
     youtube: 'https://www.youtube.com/embed/V3H1z7Z91Ps?si=GzumgrL1NcsGZyXE',
-    bgimg: 'https://www.dropbox.com/scl/fi/t5h6dsiozwjjychl3nyyg/wagtd.webp?rlkey=raplh8xikbe0908sroa3n77ud&raw=1'
+    bgimg: 'https://www.dropbox.com/scl/fi/t5h6dsiozwjjychl3nyyg/wagtd.webp?rlkey=raplh8xikbe0908sroa3n77ud&raw=1',
+    genre: 'Top-down Multiplayer Shooter',
+    platform: 'PC',
+    duration: '11 months',
+    teamsize: '15 - 20',
+    released: null
   },
   {
     id: 'nyxr-bot',
@@ -142,13 +168,19 @@ const projects: Project[] = [
       'Responsive design for all devices',
       'Custom terminal animations'
     ],
+    responsibilities: null,
     github: 'https://github.com/frolicphoenix/nyxr-bot',
     steam: null,
     liveDemo: 'https://bot.pranjallokhande.com/',
     designDoc: null,
     medium: null,
     youtube: null,
-    bgimg: null
+    bgimg: null,
+    genre: null,
+    platform: null,
+    duration: null,
+    teamsize: null,
+    released: null
   },
   {
     id: 'virtual-zoo',
@@ -171,13 +203,19 @@ const projects: Project[] = [
       'RESTful API interface',
       'Concurrent processing with proper synchronization'
     ],
+    responsibilities: null,
     github: 'https://github.com/frolicphoenix/virtualzoo',
     steam: null,
     liveDemo: null,
     designDoc: null,
     medium: null,
     youtube: null,
-    bgimg: null
+    bgimg: null,
+    genre: null,
+    platform: null,
+    duration: null,
+    teamsize: null,
+    released: null
   },
   {
     id: 'astronomy-books',
@@ -200,13 +238,19 @@ const projects: Project[] = [
       'Event-based book recommendations',
       'Responsive design for all devices'
     ],
+    responsibilities: null,
     github: 'https://github.com/frolicphoenix/astronomy-in-books',
     steam: null,
     liveDemo: 'https://astronomy-in-books.vercel.app/',
     designDoc: null,
     medium: null,
     youtube: null,
-    bgimg: null
+    bgimg: null,
+    genre: null,
+    platform: null,
+    duration: null,
+    teamsize: null,
+    released: null
   },
   {
     id: 'pokemon-tracker',
@@ -228,13 +272,19 @@ const projects: Project[] = [
       'Item combination tracking',
       'User-friendly interface for build management'
     ],
+    responsibilities: null,
     github: 'https://github.com/frolicphoenix/PokemonUniteBuildTracker_PassionProject',
     steam: null,
     liveDemo: null,
     designDoc: 'https://docs.google.com/document/d/e/2PACX-1vSJkgj9lxDNcYDl8PptKUE8WQK-4d3pG1OIHi1Vtru21Sc5mjUfLIukphLYuzSGPd5QLS1u_h-48JB4/pub',
     medium: null,
     youtube: 'https://www.youtube.com/embed/48aqOM84CMU?si=fe-8fyQcnYkym5H0',
-    bgimg: null
+    bgimg: null,
+    genre: null,
+    platform: null,
+    duration: null,
+    teamsize: null,
+    released: null
   }
 ];
 

@@ -18,13 +18,13 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
       onClick={onClose}
     >
       <motion.div 
-        className="w-11/12 max-w-4xl max-h-[90vh] bg-[#1e1e1e]/95 rounded-2xl overflow-hidden flex flex-col"
+        className="w-11/12 max-w-5xl max-h-[90vh] bg-[#1e1e1e]/95 rounded-2xl overflow-hidden flex flex-col"
         initial={{ scale: 0.95, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 50 }}
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center p-5 border-b border-white/10 bg-cover" style={{ backgroundImage: `url(${project.bgimg})` }}>
+        <div className="flex justify-between items-center p-7 border-b border-white/10 bg-cover" style={{ backgroundImage: `url(${project.bgimg})` }}>
          
           <h2 className="text-2xl font-semibold">{project.title}</h2>
           <div className="flex">
@@ -93,54 +93,123 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             &times;
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto p-5">
-          <div className="w-full rounded-lg overflow-hidden mb-5">
-          {project.youtube ? (
-            <iframe
-              width="700"
-              height="415"
-              src={project.youtube}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="w-full object-cover"
-            />
-          ) : project.thumb ? (
-            <video
-              src={project.thumb}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-              preload="metadata"
-            />
-          ) : null}
+
+        <div className="flex-1 overflow-y-auto p-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-5">
+            <div className="col-span-3 md:col-span-2 w-full rounded-lg overflow-hidden">
+              {project.youtube ? (
+                <iframe
+                  width="400"
+                  height="315"
+                  src={project.youtube}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="w-full object-cover"
+                />
+              ) : project.thumb ? (
+                <video
+                  src={project.thumb}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  preload="metadata"
+                />
+              ) : null}                       
+            </div>
+            <div className="col-span-3 md:col-span-1 space-y-3">
+              
+              <div>                
+                <h3 className="text-med text-amber-300 mb-2">Tools</h3>
+                {project.tags.map((tag, index) => (
+                  <span 
+                    key={index} 
+                    className={`
+                      text-xs px-2 py-0.5 rounded-full 
+                      ${tag.isWebTag 
+                        ? 'bg-[#506b2d]/20 text-[#bbcf64]' 
+                        : 'bg-[#88a035]/20 text-[#bbcf64]'
+                      }
+                    `}
+                  >
+                    {tag.label}
+                  </span>
+                ))}
+              </div>
+              
+              <div>
+                {project.genre && (
+                  <><h3 className="text-med text-amber-300 mb-1">Genre</h3>
+                  <p className="leading-relaxed">{project.genre}</p></>
+                )}
+              </div>
+
+              <div>
+                {project.platform && (
+                  <><h3 className="text-med text-amber-300 mb-1">Platform</h3>
+                  <p className="leading-relaxed">{project.platform}</p></>
+                )}
+              </div>
+
+              <div>
+                {project.teamsize && (
+                  <><h3 className="text-med text-amber-300 mb-1">Team Size</h3>
+                  <p className="leading-relaxed">{project.teamsize}</p></>
+                )}
+              </div>
+
+              <div>
+                {project.duration && (
+                  <><h3 className="text-med text-amber-300 mb-1">Duration</h3>
+                  <p className="leading-relaxed">{project.duration}</p></>
+                )}
+              </div>
+
+              <div>
+                {project.released && (
+                  <><h3 className="text-med text-amber-300 mb-1">Released</h3>
+                  <p className="leading-relaxed">{project.released}</p></>
+                )}
+              </div>
+            </div>
           </div>
+            
           
           <div className="mb-5">
             <h3 className="text-xl text-[#88a035] mb-2">Overview</h3>
             <p className="leading-relaxed">{project.detailedDescription}</p>
           </div>
-          
-          <div className="mb-5">
-            <h3 className="text-xl text-[#88a035] mb-2">Skills & Technologies</h3>
-            <p className="leading-relaxed">{project.technologies}</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
+
+            <div className="mb-5">
+              <h3 className="text-xl text-[#88a035] mb-2">Features</h3>
+              <ul className="list-disc pl-5 space-y-1">
+                {project.features.map((feature, index) => (
+                  <li key={index} className="leading-relaxed">{feature}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mb-5">
+              {project.responsibilities && (
+                <><h3 className="text-xl text-[#88a035] mb-2">What I worked on</h3>
+                <ul className="list-disc pl-5 space-y-1">
+                  {project.responsibilities.map((feature, index) => (
+                    <li key={index} className="leading-relaxed">{feature}</li>
+                  ))}
+                </ul></>
+                )}
+            </div>
+            
           </div>
-          
-          <div className="mb-5">
-            <h3 className="text-xl text-[#88a035] mb-2">Features</h3>
-            <ul className="list-disc pl-5 space-y-1">
-              {project.features.map((feature, index) => (
-                <li key={index} className="leading-relaxed">{feature}</li>
-              ))}
-            </ul>
-          </div>
-          
+
           <div className=" flex mb-5">
             {project.designDoc && (
-              <iframe className='w-25/26 h-100' src="https://docs.google.com/document/d/e/2PACX-1vSJkgj9lxDNcYDl8PptKUE8WQK-4d3pG1OIHi1Vtru21Sc5mjUfLIukphLYuzSGPd5QLS1u_h-48JB4/pub?embedded=true"></iframe>
+              <iframe className='w-25/26 h-150' src="https://docs.google.com/document/d/e/2PACX-1vSJkgj9lxDNcYDl8PptKUE8WQK-4d3pG1OIHi1Vtru21Sc5mjUfLIukphLYuzSGPd5QLS1u_h-48JB4/pub?embedded=true"></iframe>
             )}
           </div>
         </div>
