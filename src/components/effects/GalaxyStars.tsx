@@ -1,4 +1,3 @@
-import React from "react";
 import { useP5 } from "../../hooks/useP5";
 
 const GalaxyStars = () => {
@@ -150,5 +149,4 @@ const GalaxyStars = () => {
   return <div id="galaxy-stars" className="absolute inset-0 z-[-1]" />;
 };
 
-export default React.memo(GalaxyStars);
-
+export default GalaxyStars;

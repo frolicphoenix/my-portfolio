@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useAnimationControls } from 'framer-motion'
 
 interface SparkleProps {
@@ -9,41 +9,50 @@ interface SparkleProps {
   style: React.CSSProperties
 }
 
-// Utility to get a random number between min and max
 const random = (min: number, max: number) => Math.random() * (max - min) + min
 
-// Generate a new sparkle
-const generateSparkle = (color: string): SparkleProps => ({
-  id: String(random(10000, 99999)),
-  createdAt: Date.now(),
-  color,
-  size: random(10, 20),
-  style: {
-    top: `${random(-10, 50)}%`,
-    left: `${random(-10, 110)}%`,
-    zIndex: 2,
-  },
-})
+const generateSparkle = (color: string): SparkleProps => {
+  return {
+    id: String(random(10000, 99999)),
+    createdAt: Date.now(),
+    color,
+    size: random(10, 20),
+    style: {
+      top: random(-10, 50) + '%',
+      left: random(-10, 110) + '%',
+      zIndex: 2,
+    },
+  }
+}
 
-// Range helper
 const range = (start: number, end: number, step = 1): number[] => {
-  const output: number[] = []
-  for (let i = start; i < end; i += step) output.push(i)
+  const output = []
+  for (let i = start; i < end; i += step) {
+    output.push(i)
+  }
   return output
 }
 
-// Single sparkle instance
-const SparkleInstance: React.FC<{ color: string; size: number; style: React.CSSProperties }> = ({ color, size, style }) => {
+interface SparkleInstanceProps {
+  color: string
+  size: number
+  style: React.CSSProperties
+}
+
+const SparkleInstance = ({ color, size, style }: SparkleInstanceProps) => {
   const controls = useAnimationControls()
-
+  
   useEffect(() => {
-    controls.start({
-      scale: [0, 1, 0],
-      rotate: [0, 180],
-      transition: { duration: 0.7 }
-    })
+    const sequence = async () => {
+      await controls.start({
+        scale: [0, 1, 0],
+        rotate: [0, 180],
+        transition: { duration: 0.7 }
+      })
+    }
+    sequence()
   }, [controls])
-
+  
   return (
     <motion.svg
       width={size}
@@ -52,9 +61,6 @@ const SparkleInstance: React.FC<{ color: string; size: number; style: React.CSSP
       fill="none"
       style={style}
       className="absolute pointer-events-none"
-      role="presentation"
-      aria-hidden="true"
-      focusable="false"
       animate={controls}
     >
       <path
@@ -65,52 +71,55 @@ const SparkleInstance: React.FC<{ color: string; size: number; style: React.CSSP
   )
 }
 
-// Main Sparkles wrapper
 interface SparklesProps {
   color?: string
   children: React.ReactNode
   className?: string
 }
 
-const Sparkles: React.FC<SparklesProps> = ({ color = '#FFFF00', children, className = '' }) => {
+const Sparkles = ({ color = '#FFFF00', children, className = '' }: SparklesProps) => {
   const [sparkles, setSparkles] = useState<SparkleProps[]>([])
   const prefersReducedMotion = useRef(false)
-
+  
   useEffect(() => {
-    // Check for reduced motion
+    // Check if user prefers reduced motion
     prefersReducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    
     if (prefersReducedMotion.current) return
-
-    // Initial sparkles
-    setSparkles(range(0, 3).map(() => generateSparkle(color)))
-
-    // Interval to add new sparkles
-    const intervalId = window.setInterval(() => {
+    
+    // Create initial sparkles
+    const initialSparkles = range(0, 3).map(() => generateSparkle(color))
+    setSparkles(initialSparkles)
+    
+    // Set up interval to add new sparkles
+    const intervalId = setInterval(() => {
       const now = Date.now()
-      setSparkles(old => [
-        ...old.filter(s => now - s.createdAt < 750),
-        generateSparkle(color)
-      ])
+      // Remove sparkles older than 700ms and add a new one
+      setSparkles(sparkles => {
+        const nextSparkles = sparkles
+          .filter(sparkle => now - sparkle.createdAt < 750)
+          .concat(generateSparkle(color))
+        
+        return nextSparkles
+      })
     }, 350)
-
-    return () => window.clearInterval(intervalId)
+    
+    return () => clearInterval(intervalId)
   }, [color])
-
+  
   return (
-    <span className={`inline-block relative ${className}`} aria-hidden="true">
-      {!prefersReducedMotion.current && sparkles.map(s => (
+    <span className={`inline-block relative ${className}`}>
+      {prefersReducedMotion.current ? null : sparkles.map(sparkle => (
         <SparkleInstance
-          key={s.id}
-          color={s.color}
-          size={s.size}
-          style={s.style}
+          key={sparkle.id}
+          color={sparkle.color}
+          size={sparkle.size}
+          style={sparkle.style}
         />
       ))}
-      <span className="relative z-1">
-        {children}
-      </span>
+      <span className="relative z-1">{children}</span>
     </span>
   )
 }
 
-export default React.memo(Sparkles)
+export default Sparkles

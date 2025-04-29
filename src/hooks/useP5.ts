@@ -1,35 +1,22 @@
-import { useEffect, useRef } from "react";
-import type P5 from "p5";
+import { useEffect } from "react";
 
-/**
- * Custom hook to initialize a p5.js sketch within a React component.
- * @param sketch - The p5 sketch function.
- * @param parentId - The DOM element ID where the canvas is mounted.
- */
-export function useP5(sketch: (p5: P5) => void, parentId: string) {
-  const instanceRef = useRef<P5 | null>(null);
-
+export function useP5(sketch: (p5: any) => void, parentId: string) {
   useEffect(() => {
-    let isMounted = true;
+    let instance: any;
+    let mounted = true;
 
-    // Dynamically import p5 to reduce bundle size
-    import("p5").then(({ default: P5Class }) => {
-      if (!isMounted || typeof window === "undefined") return;
-
+    import("p5").then((p5Module) => {
+      if (!mounted) return;
+      const p5 = p5Module.default;
       const parent = document.getElementById(parentId);
       if (parent) {
-        // Initialize the p5 instance
-        instanceRef.current = new P5Class(sketch, parent);
+        instance = new p5(sketch, parent);
       }
     });
 
     return () => {
-      isMounted = false;
-      // Clean up the p5 instance on unmount
-      if (instanceRef.current) {
-        instanceRef.current.remove();
-        instanceRef.current = null;
-      }
+      mounted = false;
+      if (instance) instance.remove();
     };
-  }, [sketch, parentId]);
+  }, []); 
 }
