@@ -35,7 +35,9 @@ const Portfolio = () => {
           aria-label="Main Navigation"
           className="
             fixed left-1/2 transform -translate-x-1/2
-            bottom-6 md:bottom-12 lg:bottom-16    
+            bottom-[calc(env(safe-area-inset-bottom)+1rem)]
+            md:bottom-[calc(env(safe-area-inset-bottom)+1.5rem)]
+            lg:bottom-[calc(env(safe-area-inset-bottom)+2rem)]
             flex gap-3 md:gap-5               
             px-3 md:px-6 py-2 md:py-4            
             bg-[#121212]/80 backdrop-blur-md rounded-full
