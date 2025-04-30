@@ -14,7 +14,7 @@ type Scene = 'home' | 'projects' | 'about' | 'skills' | 'contact'
 
 const Portfolio = () => {
   const [activeScene, setActiveScene] = useState<Scene>('home')
-  const [isNavVisible, setIsNavVisible] = useState(true)
+  const [isNavVisible, setIsNavVisible] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   // Check if we're on mobile
@@ -27,14 +27,6 @@ const Portfolio = () => {
     window.addEventListener('resize', checkIfMobile)
     return () => window.removeEventListener('resize', checkIfMobile)
   }, [])
-
-  // Auto-hide nav on mobile after a scene change
-  useEffect(() => {
-    if (isMobile && activeScene !== 'home') {
-      const timer = setTimeout(() => setIsNavVisible(false), 1500)
-      return () => clearTimeout(timer)
-    }
-  }, [activeScene, isMobile])
 
   const navItems = [
     { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
@@ -56,85 +48,123 @@ const Portfolio = () => {
       {/* Universe Container */}
       <div className="relative bottom-20 top-2 w-full h-full transition-all duration-500 ease-in-out">
         
-        {/* Navigation - Conditional Rendering for Mobile */}
-        <AnimatePresence>
-          {(!isMobile || (isMobile && isNavVisible)) && (
-            <motion.nav 
-              aria-label="Main Navigation"
-              className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-3 md:gap-5 px-4 md:px-6 py-3 md:py-4 bg-[#121212]/90 backdrop-blur-md rounded-full z-50 shadow-lg"
-              initial={isMobile ? { y: 20, opacity: 0 } : { opacity: 1 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={isMobile ? { y: 20, opacity: 0 } : {}}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded transition-all duration-300 relative group
-                    ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
-                  onClick={() => setActiveScene(item.id as Scene)}
-                >
-                  <img
-                    src={item.img}
-                    alt={item.label}
-                    loading='lazy'
-                    className="w-12 h-12 object-contain"
-                  />
-                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs opacity-0 scale-0 transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
-                    {item.label}
-                  </span>
-                </button>
-              ))}
-            </motion.nav>
-          )}
-        </AnimatePresence>
-
-        {/* Toggle Button - Only shown on mobile */}
+        {/* MOBILE NAVIGATION - Corner Menu */}
         {isMobile && (
-          <motion.button
-            onClick={() => setIsNavVisible(!isNavVisible)}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#88a035] text-amber-300 w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div
-              animate={{ rotate: isNavVisible ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="w-6 h-6 flex items-center justify-center"
+          <>
+            {/* Menu Toggle Button */}
+            <motion.button
+              onClick={() => setIsNavVisible(!isNavVisible)}
+              className="fixed bottom-20 right-6 z-50 bg-[#677927] text-amber-300 w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {/* Animated Arrow SVG */}
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="3" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-                className="w-6 h-6"
+              <motion.div
+                animate={{ rotate: isNavVisible ? 45 : 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <path d="M18 15l-6-6-6 6"/>
-              </svg>
-            </motion.div>
+                {/* Menu/Close Icon */}
+                {isNavVisible ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                  </svg>
+                )}
+              </motion.div>
+              
+              {/* Animated Glow Effect */}
+              <motion.div 
+                className="absolute inset-0 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.5, 0] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2,
+                  repeatType: "loop", 
+                  times: [0, 0.5, 1] 
+                }}
+              >
+                <span className="absolute h-2 w-2 rounded-full bg-amber-300/80 top-2 left-1/2 -translate-x-1/2"></span>
+                <span className="absolute h-2 w-2 rounded-full bg-amber-300/80 bottom-2 left-1/2 -translate-x-1/2"></span>
+              </motion.div>
+            </motion.button>
             
-            {/* Animated Sparkle Effect */}
-            <motion.div 
-              className="absolute inset-0 pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.5, 0] }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 2, 
-                repeatType: "loop", 
-                times: [0, 0.5, 1] 
-              }}
-            >
-              <span className="absolute h-8 w-[1px] bg-amber-300/50 top-2 left-2 rotate-45"></span>
-              <span className="absolute h-8 w-[1px] bg-amber-300/50 top-2 right-2 -rotate-45"></span>
-              <span className="absolute h-2 w-2 rounded-full bg-amber-300/80 top-1 left-1/2 -translate-x-1/2"></span>
-              <span className="absolute h-2 w-2 rounded-full bg-amber-300/80 bottom-1 left-1/2 -translate-x-1/2"></span>
-            </motion.div>
-          </motion.button>
+            {/* Mobile Navigation Menu */}
+            <AnimatePresence>
+              {isNavVisible && (
+                <motion.div
+                  className="fixed bottom-28 right-6 z-50 bg-[#121212]/90 backdrop-blur-md rounded-2xl p-4 shadow-lg"
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                  transition={{ duration: 0.3, ease: "backOut" }}
+                >
+                  <div className="flex flex-col gap-3">
+                    {navItems.map((item, index) => (
+                      <motion.button
+                        key={item.id}
+                        className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-300
+                          ${activeScene === item.id ? 'bg-[#ffcc4d]/20 text-[#ffcc4d]' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
+                        onClick={() => {
+                          setActiveScene(item.id as Scene);
+                          // Optional: close menu after selection
+                          // setIsNavVisible(false);
+                        }}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ 
+                          opacity: 1, 
+                          x: 0,
+                          transition: { delay: index * 0.05 } 
+                        }}
+                      >
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#1e1e1e]">
+                          <img
+                            src={item.img}
+                            alt={item.label}
+                            loading="lazy"
+                            className="w-10 h-10 object-contain"
+                          />
+                        </div>
+                        <span className="font-medium">{item.label}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
+        )}
+
+        {/* DESKTOP NAVIGATION */}
+        {!isMobile && (
+          <nav 
+            aria-label="Main Navigation"
+            className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
+          >
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                className={`w-12 h-12 flex items-center justify-center rounded transition-all duration-300 relative group
+                  ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
+                onClick={() => setActiveScene(item.id as Scene)}
+              >
+                <img
+                  src={item.img}
+                  alt={item.label}
+                  loading='lazy'
+                  className="w-15 h-15 object-contain"
+                />
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs opacity-0 scale-0 transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
+                  {item.label}
+                </span>
+              </button>
+            ))}
+          </nav>
         )}
 
         {/* Scenes */}
