@@ -23,7 +23,7 @@ const AboutScene = () => (
   >
 
     {/* About Card */}
-    <div className="relative w-11/12 max-w-6xl h-auto md:h-4/5 bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+    <div className="relative w-11/12 max-w-6xl h-auto md:h-5/6 bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
       <AboutCardSparkles/>
 
       {/* Image */}

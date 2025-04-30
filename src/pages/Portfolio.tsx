@@ -98,7 +98,7 @@ const Portfolio = () => {
             <AnimatePresence>
               {isNavVisible && (
                 <motion.div
-                  className="fixed bottom-28 right-6 z-50 bg-[#121212]/90 backdrop-blur-md rounded-2xl p-4 shadow-lg"
+                  className="absolute bottom-28 right-6 z-50 bg-[#121212]/90 backdrop-blur-md rounded-2xl p-4 shadow-lg"
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -144,7 +144,7 @@ const Portfolio = () => {
         {!isMobile && (
           <nav 
             aria-label="Main Navigation"
-            className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
+            className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
           >
             {navItems.map((item) => (
               <button

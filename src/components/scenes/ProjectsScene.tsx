@@ -30,7 +30,7 @@ const ProjectsScene = () => {
       exit={{ opacity: 0, x: -100, rotateY: -10 }}
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-12/13 max-w-400 h-4/5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-12/13 max-w-400 h-7/8">
 
         {/* Game Projects */}
         <div className="flex flex-col gap-5 p-6 rounded-xl bg-[#1e1e1e]/50 backdrop-blur-md h-full overflow-y-auto scrollbar">
