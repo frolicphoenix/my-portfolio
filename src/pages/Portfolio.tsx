@@ -34,14 +34,12 @@ const Portfolio = () => {
         <nav 
           aria-label="Main Navigation"
           className="
-            fixed left-1/2 transform -translate-x-1/2
-            bottom-0
-            pb-[calc(env(safe-area-inset-bottom)+1rem)]
-            flex gap-3 md:gap-5               
-            px-3 md:px-6 py-2 md:py-4            
+            fixed left-1/2 transform -translate-x-1/2 
+            bottom-20 md:bottom-24 lg:bottom-28 
+            flex gap-3 md:gap-5
+            px-3 md:px-6 py-2 md:py-4
             bg-[#121212]/80 backdrop-blur-md rounded-full
-            z-50 shadow-lg
-            overflow-z-auto max-w-full
+            z-50 shadow-lg overflow-z-auto max-w-full
           "
         >
           {[
