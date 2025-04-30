@@ -1,11 +1,18 @@
 import { useP5 } from "../../hooks/useP5";
 
-const GalaxyStars = () => {
+// TS interfaces
+interface GalaxyStarsProps {
+  lowPerformanceMode?: boolean;
+  disabled?: boolean;
+}
+
+const GalaxyStars = ({ lowPerformanceMode = false, disabled = false }: GalaxyStarsProps) => {
+  // Simple sketch function - unchanged from your original
   const sketch = (p5: any) => {
-    let stars: Star[] = [];
-    let nebulaParticles: Nebula[] = [];
-    const numStars = 350;
-    const numNebula = 80;
+    let stars: any[] = [];
+    let nebulaParticles: any[] = [];
+    const numStars = lowPerformanceMode ? 150 : 350;
+    const numNebula = lowPerformanceMode ? 40 : 80;
     let auroraOffset = 0;
 
     class Star {
@@ -49,12 +56,12 @@ const GalaxyStars = () => {
         this.size = p5.random(80, 200);
         this.speedX = p5.random(-0.2, 0.2);
         this.speedY = p5.random(-0.1, 0.1);
-        // Olive-green shades: tweak the R G B values as desired
+        // Olive-green shades
         this.col = p5.color(
-          p5.random(70, 110),  // R: muted green tones
-          p5.random(90, 140),  // G: lush, leafy green
-          p5.random(60, 90),   // B: low blue component for warmth
-          20                  // very transparent
+          p5.random(70, 110),  // R
+          p5.random(90, 140),  // G
+          p5.random(60, 90),   // B
+          20                  // alpha
         );
       }
 
@@ -77,6 +84,7 @@ const GalaxyStars = () => {
     p5.setup = () => {
       p5.createCanvas(window.innerWidth, window.innerHeight);
       p5.colorMode(p5.RGB, 255, 255, 255, 255);
+      
       // Create stars & nebula particles
       for (let i = 0; i < numStars; i++) {
         stars.push(new Star());
@@ -89,7 +97,7 @@ const GalaxyStars = () => {
     const drawAurora = () => {
       p5.noStroke();
       // Olive-green aurora shade
-      p5.fill(85, 107, 47, 100); // dark olive green with transparency
+      p5.fill(85, 107, 47, 100);
       p5.beginShape();
       let xOff = auroraOffset;
       for (let x = -50; x <= p5.width + 50; x += 10) {
@@ -106,10 +114,7 @@ const GalaxyStars = () => {
     };
 
     p5.draw = () => {
-      // p5.background(5, 5, 20, 50);
-      
       p5.background(8, 4, 16, 80);
-
 
       const offsetX = p5.map(p5.mouseX, 0, p5.width, -50, 50);
       const offsetY = p5.map(p5.mouseY, 0, p5.height, -50, 50);
@@ -123,19 +128,15 @@ const GalaxyStars = () => {
       p5.pop();
 
       p5.push();
-
-      // They stay in the background without mouse offset
       for (let n of nebulaParticles) {
         n.update();
         n.show();
       }
       p5.pop();
-      p5.push();
-
+      
       p5.push();
       p5.translate(-p5.width / 2, -p5.height / 2);
       drawAurora();
-      p5.pop();
       p5.pop();
     };
 
@@ -144,6 +145,12 @@ const GalaxyStars = () => {
     };
   };
 
+  // If disabled, return a static background
+  if (disabled) {
+    return <div id="galaxy-stars" className="absolute inset-0 z-[-1] bg-[#0a0a0a]" />;
+  }
+  
+  // Always call useP5 to maintain hook order consistency
   useP5(sketch, "galaxy-stars");
 
   return <div id="galaxy-stars" className="absolute inset-0 z-[-1]" />;
