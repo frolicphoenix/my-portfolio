@@ -27,12 +27,12 @@ const Portfolio = () => {
   // Safety timers to prevent browser crashes
   useEffect(() => {
     const autoSwitchTimer = setTimeout(() => {
-      console.log("Auto-switching to low performance mode to prevent browser crash")
+      // console.log("Auto-switching to low performance mode to prevent browser crash")
       setLowPerfMode(true)
     }, 3 * 60 * 1000) 
 
     const disableTimer = setTimeout(() => {
-      console.log("Disabling heavy animations to prevent browser crash")
+      // console.log("Disabling heavy animations to prevent browser crash")
       setDisableHeavyAnimations(true)
     }, 6 * 60 * 1000)
 
@@ -75,17 +75,17 @@ const Portfolio = () => {
       const memInfo = getMemoryInfo();
       if (memInfo.usedJSHeapSize) {
         const memUsage = memInfo.usedJSHeapSize / (1024 * 1024);
-        console.log(`Memory usage: ${memUsage.toFixed(2)}MB`);
+        // console.log(`Memory usage: ${memUsage.toFixed(2)}MB`);
         
         // If memory usage is over 300MB, take action
         if (memUsage > 300) {
-          console.warn("High memory usage detected - reducing animations");
+          // console.warn("High memory usage detected - reducing animations");
           setLowPerfMode(true);
         }
         
         // If memory usage is critical, disable animations
         if (memUsage > 500) {
-          console.warn("Critical memory usage - disabling animations");
+          // console.warn("Critical memory usage - disabling animations");
           setDisableHeavyAnimations(true);
           // Clear this interval when we've disabled animations
           clearInterval(memoryInterval);
@@ -115,16 +115,16 @@ const Portfolio = () => {
         
         // Only log when FPS is below threshold to avoid console spam
         if (fps < 40) {
-          console.log(`Current FPS: ${fps}`)
+          // console.log(`Current FPS: ${fps}`)
         }
         
         if (fps < 30) {
-          console.warn('Performance degrading')
+          // console.warn('Performance degrading')
           counter++
           
           // Auto-reduce animations after consistent low performance
           if (counter > 3 && !reduceAnimations) {
-            console.warn('Automatically reducing animations to prevent crash')
+            // console.warn('Automatically reducing animations to prevent crash')
             setReduceAnimations(true)
           }
         } else {
@@ -165,7 +165,7 @@ const Portfolio = () => {
         // Don't override a full disable
         if (!disableHeavyAnimations) {
           setReduceAnimations(true)
-          console.log("User inactive, reducing animations")
+          // console.log("User inactive, reducing animations")
         }
       }, 60000) // 1 minute of inactivity
     }
