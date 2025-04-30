@@ -33,17 +33,7 @@ const Portfolio = () => {
         {/* Navigation */}
         <nav 
           aria-label="Main Navigation"
-          style={{
-            bottom: 'calc(env(safe-area-inset-bottom, 56px) + 16px)'
-          }}
-          className="
-            fixed left-1/2 transform -translate-x-1/2 
-            bottom-20 md:bottom-24 lg:bottom-28 
-            flex gap-3 md:gap-5
-            px-3 md:px-6 py-2 md:py-4
-            bg-[#121212]/80 backdrop-blur-md rounded-full
-            z-50 shadow-lg overflow-z-auto max-w-full
-          "
+          className="fixed bottom-15 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
         >
           {[
             { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
@@ -54,13 +44,8 @@ const Portfolio = () => {
           ].map((item) => (
             <button
               key={item.id}
-              className={`
-                w-10 h-10 md:w-12 md:h-12          
-                flex items-center justify-center rounded transition-all duration-300 relative group
-                ${activeScene === item.id 
-                  ? 'bg-[#ffcc4d] text-white' 
-                  : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}
-              `}
+              className={`w-12 h-12 flex items-center justify-center rounded transition-all duration-300 relative group
+                ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
               onClick={() => setActiveScene(item.id as Scene)}
             >
               {/* {item.icon} */}
@@ -68,12 +53,9 @@ const Portfolio = () => {
                 src={item.img}
                 alt={item.label}
                 loading='lazy'
-                className="w-6 h-6 md:w-8 md:h-8 object-contain"
+                className="w-15 h-15 object-contain"
               />
-              <span 
-                className="
-                  absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs  whitespace-nowrap opacity-0 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"
-                > 
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs opacity-0 scale-0 transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
                 {item.label}
               </span>
             </button>
@@ -114,9 +96,14 @@ const Portfolio = () => {
                   >
                     ✨ Creative Technologist ✨
                   </motion.h2>
-                  <p className="mb-10 fade-in">
+                  <motion.p 
+                    className="mb-10"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                  >
                     With 3+ years' experience building video games, apps, websites, and tools, a relentless idea machine who lives at the crossroads of storytelling, design, and technology.
-                  </p>
+                  </motion.p>
                   <motion.div 
                     className="flex gap-5 mt-10"
                     initial={{ y: 20, opacity: 0 }}
