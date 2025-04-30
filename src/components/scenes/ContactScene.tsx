@@ -37,12 +37,12 @@ const ContactScene = () => {
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className="flex flex-col items-center text-center max-w-7xl w-full px-4 sm:px-6">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-10 bg-gradient-to-r from-[#88a035] to-[#bbcf64] bg-clip-text text-transparent">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-10 bg-gradient-to-r from-[#88a035] to-[#bbcf64] bg-clip-text text-transparent">
           Contact Me
         </h2>
 
         {/* Flex Layout for Links + Form */}
-        <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full justify-center items-center md:items-start">
+        <div className="flex flex-col md:flex-row gap-1 md:gap-10 w-full justify-center items-center md:items-start">
 
           {/* Contact Links */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:flex md:flex-col w-full max-w-md gap-3 sm:gap-4">
@@ -135,7 +135,7 @@ const ContactScene = () => {
 
         {/* Footer */}
         <motion.div 
-          className="mt-8 sm:mt-16 md:mt-20 text-bold opacity-60 pb-4"
+          className="mt-2 sm:mt-16 md:mt-20 text-bold opacity-60 pb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.9, transition: { delay: 0.8 } }}
         >
