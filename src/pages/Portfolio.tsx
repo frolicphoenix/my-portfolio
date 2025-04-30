@@ -1,5 +1,4 @@
-
-import { useState, Suspense, lazy } from 'react'
+import { useState, Suspense, lazy, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const ProjectsScene = lazy(() => import('../components/scenes/ProjectsScene'))
@@ -15,11 +14,38 @@ type Scene = 'home' | 'projects' | 'about' | 'skills' | 'contact'
 
 const Portfolio = () => {
   const [activeScene, setActiveScene] = useState<Scene>('home')
+  const [isNavVisible, setIsNavVisible] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkIfMobile()
+    window.addEventListener('resize', checkIfMobile)
+    return () => window.removeEventListener('resize', checkIfMobile)
+  }, [])
+
+  // Auto-hide nav on mobile after a scene change
+  useEffect(() => {
+    if (isMobile && activeScene !== 'home') {
+      const timer = setTimeout(() => setIsNavVisible(false), 1500)
+      return () => clearTimeout(timer)
+    }
+  }, [activeScene, isMobile])
+
+  const navItems = [
+    { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
+    { id: 'projects', label: 'Projects', img: 'https://img.icons8.com/clouds/400/folder-invoices.png', icon: '📁' },
+    { id: 'about', label: 'About', img: 'https://img.icons8.com/clouds/400/about.png', icon: '💁🏻‍♀️' },
+    { id: 'skills', label: 'Skills', img: 'https://img.icons8.com/clouds/400/gear.png', icon: '⚙️' },
+    { id: 'contact', label: 'Contact', img: 'https://img.icons8.com/clouds/400/contact.png', icon: '✉️' }
+  ]
 
   return (
-    
     <div className="relative w-full h-full perspective-[1000px]">
-
       {/* Galaxy Background - Always Rendered */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
@@ -28,39 +54,88 @@ const Portfolio = () => {
       </div>
 
       {/* Universe Container */}
-      <div className="relative bottom-20 top-2  w-full h-full transition-all duration-500 ease-in-out">
+      <div className="relative bottom-20 top-2 w-full h-full transition-all duration-500 ease-in-out">
         
-        {/* Navigation */}
-        <nav 
-          aria-label="Main Navigation"
-          className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
-        >
-          {[
-            { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
-            { id: 'projects', label: 'Projects', img: 'https://img.icons8.com/clouds/400/folder-invoices.png', icon: '📁' },
-            { id: 'about', label: 'About', img: 'https://img.icons8.com/clouds/400/about.png', icon: '💁🏻‍♀️' },
-            { id: 'skills', label: 'Skills', img: 'https://img.icons8.com/clouds/400/gear.png', icon: '⚙️' },
-            { id: 'contact', label: 'Contact', img: 'https://img.icons8.com/clouds/400/contact.png', icon: '✉️' }
-          ].map((item) => (
-            <button
-              key={item.id}
-              className={`w-12 h-12 flex items-center justify-center rounded transition-all duration-300 relative group
-                ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
-              onClick={() => setActiveScene(item.id as Scene)}
+        {/* Navigation - Conditional Rendering for Mobile */}
+        <AnimatePresence>
+          {(!isMobile || (isMobile && isNavVisible)) && (
+            <motion.nav 
+              aria-label="Main Navigation"
+              className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-3 md:gap-5 px-4 md:px-6 py-3 md:py-4 bg-[#121212]/90 backdrop-blur-md rounded-full z-50 shadow-lg"
+              initial={isMobile ? { y: 20, opacity: 0 } : { opacity: 1 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={isMobile ? { y: 20, opacity: 0 } : {}}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              {/* {item.icon} */}
-              <img
-                src={item.img}
-                alt={item.label}
-                loading='lazy'
-                className="w-15 h-15 object-contain"
-              />
-              <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs opacity-0 scale-0 transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
-                {item.label}
-              </span>
-            </button>
-          ))}
-        </nav>
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded transition-all duration-300 relative group
+                    ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
+                  onClick={() => setActiveScene(item.id as Scene)}
+                >
+                  <img
+                    src={item.img}
+                    alt={item.label}
+                    loading='lazy'
+                    className="w-12 h-12 object-contain"
+                  />
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#88a035] text-white px-2 py-1 rounded text-xs opacity-0 scale-0 transition-all duration-300 pointer-events-none whitespace-nowrap group-hover:opacity-100 group-hover:scale-100">
+                    {item.label}
+                  </span>
+                </button>
+              ))}
+            </motion.nav>
+          )}
+        </AnimatePresence>
+
+        {/* Toggle Button - Only shown on mobile */}
+        {isMobile && (
+          <motion.button
+            onClick={() => setIsNavVisible(!isNavVisible)}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#88a035] text-amber-300 w-12 h-12 rounded-full flex items-center justify-center shadow-lg overflow-hidden"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div
+              animate={{ rotate: isNavVisible ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="w-6 h-6 flex items-center justify-center"
+            >
+              {/* Animated Arrow SVG */}
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="3" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                className="w-6 h-6"
+              >
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+            </motion.div>
+            
+            {/* Animated Sparkle Effect */}
+            <motion.div 
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.5, 0] }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 2, 
+                repeatType: "loop", 
+                times: [0, 0.5, 1] 
+              }}
+            >
+              <span className="absolute h-8 w-[1px] bg-amber-300/50 top-2 left-2 rotate-45"></span>
+              <span className="absolute h-8 w-[1px] bg-amber-300/50 top-2 right-2 -rotate-45"></span>
+              <span className="absolute h-2 w-2 rounded-full bg-amber-300/80 top-1 left-1/2 -translate-x-1/2"></span>
+              <span className="absolute h-2 w-2 rounded-full bg-amber-300/80 bottom-1 left-1/2 -translate-x-1/2"></span>
+            </motion.div>
+          </motion.button>
+        )}
 
         {/* Scenes */}
         <AnimatePresence mode="wait">
@@ -77,7 +152,7 @@ const Portfolio = () => {
                 
                 <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl px-6">
                   <motion.h1 
-                      className="text-5xl font-bold mb-5"
+                      className="text-4xl md:text-5xl font-bold mb-5"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.8 }}
@@ -89,7 +164,7 @@ const Portfolio = () => {
                       </Sparkles>
                   </motion.h1>
                   <motion.h2 
-                    className="text-2xl mb-6 opacity-80 text-amber-300"
+                    className="text-xl md:text-2xl mb-6 opacity-80 text-amber-300"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 0.8 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
@@ -105,7 +180,7 @@ const Portfolio = () => {
                     With 3+ years' experience building video games, apps, websites, and tools, a relentless idea machine who lives at the crossroads of storytelling, design, and technology.
                   </motion.p>
                   <motion.div 
-                    className="flex gap-5 mt-10"
+                    className="flex flex-wrap justify-center gap-3 md:gap-5 mt-10"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.8 }}
@@ -123,14 +198,14 @@ const Portfolio = () => {
                         href={link.href} 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full text-[#f5f5f7] transition-all duration-300 hover:bg-[#88a035] hover:-translate-y-1 overflow-hidden"
+                        className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/10 rounded-full text-[#f5f5f7] transition-all duration-300 hover:bg-[#88a035] hover:-translate-y-1 overflow-hidden"
                       >
                         {link.img ? (
                           <img 
                             src={link.img}
                             alt="icon"
                             loading="lazy"
-                            className="w-15 h-15 object-contain"
+                            className="w-12 h-12 md:w-15 md:h-15 object-contain"
                           />
                         ) : (
                           link.icon
