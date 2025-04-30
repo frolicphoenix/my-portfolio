@@ -22,10 +22,23 @@ const Portfolio = () => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
+
+    let resizeTimer: string | number | NodeJS.Timeout | undefined;
+    
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        checkIfMobile();
+      }, 250); 
+
+    }
     
     checkIfMobile()
-    window.addEventListener('resize', checkIfMobile)
-    return () => window.removeEventListener('resize', checkIfMobile)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      clearTimeout(resizeTimer)
+    }
   }, [])
 
   const navItems = [
@@ -79,6 +92,7 @@ const Portfolio = () => {
               
               {/* Animated Glow Effect */}
               <motion.div 
+                key="glow-effect"
                 className="absolute inset-0 pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 0.5, 0] }}
@@ -95,10 +109,10 @@ const Portfolio = () => {
             </motion.button>
             
             {/* Mobile Navigation Menu */}
-            <AnimatePresence>
+            <AnimatePresence key="nav-presence">
               {isNavVisible && (
                 <motion.div
-                  className="absolute bottom-28 right-6 z-50 bg-[#121212]/90 backdrop-blur-md rounded-2xl p-4 shadow-lg"
+                  className="fixed bottom-28 right-6 z-50 bg-[#121212]/90 backdrop-blur-md rounded-2xl p-4 shadow-lg"
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -144,7 +158,7 @@ const Portfolio = () => {
         {!isMobile && (
           <nav 
             aria-label="Main Navigation"
-            className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
+            className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
           >
             {navItems.map((item) => (
               <button
@@ -168,7 +182,7 @@ const Portfolio = () => {
         )}
 
         {/* Scenes */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" key="scene-presense">
           <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center">Loading…</div>}>
             {activeScene === 'home' && (
               <motion.div
@@ -178,6 +192,9 @@ const Portfolio = () => {
                 animate={{ opacity: 1, x: 0, rotateY: 0 }}
                 exit={{ opacity: 0, x: -100, rotateY: -10 }}
                 transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                onAnimationComplete={(_definition) => {
+                  
+                }}
               >
                 
                 <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl px-6">
