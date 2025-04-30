@@ -45,14 +45,14 @@ const ContactScene = () => {
         <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full justify-center items-center md:items-start">
 
           {/* Contact Links */}
-          <div className="flex flex-col w-full max-w-md gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:flex md:flex-col w-full max-w-md gap-3 sm:gap-4">
             {contactLinks.map((link, index) => (
               <motion.a
                 key={index}
                 href={link.href}
                 target={link.href.startsWith('mailto:') ? undefined : '_blank'}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 bg-[#1e1e1e]/70 backdrop-blur-md p-1.5 rounded-lg text-amber-300 transition-all duration-300 hover:bg-[#88a035] hover:translate-x-2"
+                className="flex items-center gap-2 sm:gap-4 bg-[#1e1e1e]/70 backdrop-blur-md p-1.5 rounded-lg text-amber-300 transition-all duration-300 hover:bg-[#88a035] hover:translate-x-2"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ 
                   opacity: 1, 
@@ -71,7 +71,7 @@ const ContactScene = () => {
                     link.icon
                   )}
                 </div>
-                <div className="font-medium text-left">{link.label}</div>
+                <div className="font-medium text-left text-sm sm:text-base">{link.label}</div>
               </motion.a>
             ))}
           </div>
