@@ -55,6 +55,8 @@ const AboutCardSparkles = () => {
 
     initParticles();
 
+    let animationId: number;
+
     const animate = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -81,13 +83,14 @@ const AboutCardSparkles = () => {
         ctx.restore();
       });
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
       window.removeEventListener('resize', setCanvasSize);
+      cancelAnimationFrame(animationId);
     };
   }, []);
 
