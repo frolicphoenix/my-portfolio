@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import AboutCardSparkles from '../effects/AboutCardSparkles'
-import SparkleWord from '../effects/SparkleWord'     // ← import it here
+import SparkleWord from '../effects/SparkleWord'    
 
 const textContainer = {
   hidden: {},
@@ -15,7 +15,7 @@ const textItem = {
 
 const AboutScene = () => (
   <motion.div
-    className="absolute inset-0 flex items-center justify-center overflow-hidden"
+    className="absolute inset-0 flex items-center justify-center overflow-y-auto pb-20 md:pb-0 pt-4 md:pt-0"
     initial={{ opacity: 0, x: 100, rotateY: 10 }}
     animate={{ opacity: 1, x: 0, rotateY: 0 }}
     exit={{ opacity: 0, x: -100, rotateY: -10 }}
@@ -23,7 +23,7 @@ const AboutScene = () => (
   >
 
     {/* About Card */}
-    <div className="relative w-11/12 max-w-6xl h-auto md:h-4/5 bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+    <div className="relative w-11/12 max-w-6xl h-auto max-h-[90vh] bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
       <AboutCardSparkles/>
 
       {/* Image */}
@@ -33,7 +33,7 @@ const AboutScene = () => (
       </div>
 
       {/* Text */}
-      <div className="flex-1 p-6 md:p-8 overflow-y-auto scrollbar max-h-[60vh] md:max-h-none">
+      <div className="flex-1 p-6 md:p-8 overflow-y-auto scrollbar max-h-[60vh] md:max-h-none pb-16 sm:pb-6">
         <h2 className="text-2xl md:text-3xl font-bold relative inline-block mb-6 md:mb-8 text-white">
           About Me
           <div className="absolute h-[3px] w-14 bg-[#88a035] rounded left-0 -bottom-3"/>
