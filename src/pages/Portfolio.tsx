@@ -33,6 +33,9 @@ const Portfolio = () => {
         {/* Navigation */}
         <nav 
           aria-label="Main Navigation"
+          style={{
+            bottom: 'calc(env(safe-area-inset-bottom, 56px) + 16px)'
+          }}
           className="
             fixed left-1/2 transform -translate-x-1/2 
             bottom-20 md:bottom-24 lg:bottom-28 
