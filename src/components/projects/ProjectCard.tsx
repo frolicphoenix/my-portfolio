@@ -1,12 +1,13 @@
 import { Project } from "../../data/project";
 import { useState, useRef, useEffect } from 'react'
+import { memo } from 'react'
 
 interface ProjectCardProps {
   project: Project;
   onClick: () => void;
 }
 
-const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
+const ProjectCard = memo(({ project, onClick }: ProjectCardProps) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -119,6 +120,6 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       </div>
     </div>
   )
-}
+});
 
-export default ProjectCard
+export default ProjectCard;

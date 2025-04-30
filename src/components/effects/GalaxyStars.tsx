@@ -9,10 +9,11 @@ interface GalaxyStarsProps {
 const GalaxyStars = ({ lowPerformanceMode = false, disabled = false }: GalaxyStarsProps) => {
   // Simple sketch function - unchanged from your original
   const sketch = (p5: any) => {
+    
     let stars: any[] = [];
     let nebulaParticles: any[] = [];
-    const numStars = lowPerformanceMode ? 150 : 350;
-    const numNebula = lowPerformanceMode ? 40 : 80;
+    const numStars = lowPerformanceMode ? 150 : 200;
+    const numNebula = lowPerformanceMode ? 40 : 50;
     let auroraOffset = 0;
 
     class Star {
@@ -92,6 +93,7 @@ const GalaxyStars = ({ lowPerformanceMode = false, disabled = false }: GalaxySta
       for (let i = 0; i < numNebula; i++) {
         nebulaParticles.push(new Nebula());
       }
+      p5.frameRate(30);
     };
 
     const drawAurora = () => {

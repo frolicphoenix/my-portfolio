@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
-import SkillItem from '../../components/skills/SkillItem'
+import React from 'react'
+
+const SkillItem = React.lazy(() => import('../../components/skills/SkillItem'))
+
 import { skills, categoryTitles } from '../../data/skills'
 
 const SkillsScene = () => {

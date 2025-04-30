@@ -1,8 +1,11 @@
+import React from 'react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import FilterTag from '../projects/FilterTag'
-import ProjectCard from '../projects/ProjectCard'
-import ProjectModal from '../projects/ProjectModal'
+
+const FilterTag = React.lazy(() => import('../projects/FilterTag'))
+const ProjectCard = React.lazy(() => import('../projects/ProjectCard')) 
+const ProjectModal = React.lazy(() => import('../projects/ProjectModal'))
+
 import projects, { ProjectTool, Project, gameTools, webTools } from '../../data/project'
 
 const ProjectsScene = () => {

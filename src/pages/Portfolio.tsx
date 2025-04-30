@@ -6,8 +6,8 @@ const AboutScene    = lazy(() => import('../components/scenes/AboutScene'))
 const SkillsScene   = lazy(() => import('../components/scenes/SkillsScene'))
 const ContactScene  = lazy(() => import('../components/scenes/ContactScene'))
 
-import Sparkles from '../components/effects/Sparkles'
-import GalaxyStars from '../components/effects/GalaxyStars'
+const Sparkles = lazy(() => import('../components/effects/Sparkles'))
+const GalaxyStars = lazy(() => import('../components/effects/GalaxyStars'))
 
 // Types
 type Scene = 'home' | 'projects' | 'about' | 'skills' | 'contact'

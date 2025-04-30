@@ -11,4 +11,22 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        passes: 2
+      }
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          p5: ['p5'],
+          framer: ['framer-motion'],
+          react: ['react', 'react-dom']
+        }
+      }
+    }
+  }
 })

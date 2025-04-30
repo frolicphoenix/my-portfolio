@@ -1,6 +1,8 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-import AboutCardSparkles from '../effects/AboutCardSparkles'
-import SparkleWord from '../effects/SparkleWord'    
+
+const AboutCardSparkles = React.lazy(() => import('../effects/AboutCardSparkles'))
+const SparkleWord = React.lazy(() => import('../effects/SparkleWord'))
 
 const textContainer = {
   hidden: {},
