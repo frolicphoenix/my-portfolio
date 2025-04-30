@@ -10,25 +10,9 @@ export default defineConfig({
     tailwindcss(), 
     react(),
     viteImagemin({
-      mozjpeg: {
-        quality: 75,
-      },
-      pngquant: {
-        quality: [0.6, 0.8],
-      },
-      svgo: {
-        plugins: [
-          { removeViewBox: false },
-          { cleanupIDs: true }
-        ]
-      },
-      gifsicle: {
-        optimizationLevel: 3,
-      },
-      // generate WebP versions of your PNG/JPEG
       webp: {
         quality: 75
-      }
+      },
     })  
   ],
   resolve: {
