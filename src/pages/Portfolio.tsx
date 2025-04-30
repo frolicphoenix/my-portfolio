@@ -95,7 +95,7 @@ const Portfolio = () => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
                 >
-                  A relentless idea machine who live at the crossroads of storytelling, design, and technology. I have 3+ years' experience building Video Games, Apps, Websites and Tools.
+                  With 3+ years' experience building video games, apps, websites, and tools, a relentless idea machine who lives at the crossroads of storytelling, design, and technology.
                 </motion.p>
                 <motion.div 
                   className="flex gap-5 mt-10"

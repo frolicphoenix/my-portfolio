@@ -4,8 +4,6 @@ import FilterTag from '../projects/FilterTag'
 import ProjectCard from '../projects/ProjectCard'
 import ProjectModal from '../projects/ProjectModal'
 import projects, { ProjectTool, Project, gameTools, webTools } from '../../data/project'
-import { Suspense } from 'react'
-import GalaxyStars from '../effects/GalaxyStars'
 
 const ProjectsScene = () => {
   const [gameFilter, setGameFilter] = useState<ProjectTool | 'all'>('all')
@@ -33,12 +31,7 @@ const ProjectsScene = () => {
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-12/13 max-w-400 h-4/5">
-        {/* Galaxy Background - Always Rendered */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
-            <GalaxyStars />
-          </Suspense>
-        </div>
+
         {/* Game Projects */}
         <div className="flex flex-col gap-5 p-6 rounded-xl bg-[#1e1e1e]/50 backdrop-blur-md h-full overflow-y-auto scrollbar">
           

@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion'
-import { Suspense } from 'react'
-import GalaxyStars from '../effects/GalaxyStars'
 import AboutCardSparkles from '../effects/AboutCardSparkles'
 import SparkleWord from '../effects/SparkleWord'     // ← import it here
 
@@ -23,12 +21,6 @@ const AboutScene = () => (
     exit={{ opacity: 0, x: -100, rotateY: -10 }}
     transition={{ duration: 0.5, ease: [0.23,1,0.32,1] }}
   >
-    {/* Galaxy BG */}
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
-        <GalaxyStars/>
-      </Suspense>
-    </div>
 
     {/* About Card */}
     <div className="relative w-11/12 max-w-6xl h-auto md:h-4/5 bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">

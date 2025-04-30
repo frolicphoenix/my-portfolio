@@ -29,6 +29,12 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       </div>
       <div className="flex flex-col">
         <h3 className="text-lg font-medium mb-1">{project.title}</h3>
+        <div className="mb-2">
+          <p className="text-sm">
+            <i><u>{project.companylink ? <a target="_blank" className="text-amber-300" href={project.companylink}>{project.company}</a> : project.company}</u></i>
+          </p>
+        </div>
+        
         <div className="flex flex-wrap gap-1 mb-2">
           {project.tags.map((tag, index) => (
             <span 

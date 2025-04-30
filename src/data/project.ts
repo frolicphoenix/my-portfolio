@@ -24,6 +24,9 @@ export interface ProjectTag {
 export interface Project {
   id: string;
   title: string;
+  role: string | null;
+  company: string | null;
+  companylink: string | null;
   thumb: string;
   tags: ProjectTag[];
   description: string;
@@ -71,6 +74,9 @@ const projects: Project[] = [
   {
     id: 'arcane-odyssey',
     title: 'Arcane Odyssey',
+    role: 'Game Designer, Level Designer',
+    company: 'Epic Games (Women Creators Program III)',
+    companylink: 'https://www.unrealengine.com/en-US/blog/check-out-the-sizzle-reel-from-the-most-recent-women-creators-program',
     thumb: 'https://www.dropbox.com/scl/fi/iirjc7cy8l5lo3rafdtk6/ao.mp4?rlkey=amtguws2frifn51pngsrrk0c2&st=vzm2hjiz&raw=1',
     tags: [
       { label: 'Game Design' },
@@ -111,6 +117,9 @@ const projects: Project[] = [
   {
     id: 'wagtd',
     title: "We're All Going To Die!",
+    role: 'Level Designer',
+    company: 'Black Banshee Studios',
+    companylink: 'https://www.blackbansheestudios.com/',
     thumb: 'https://www.dropbox.com/scl/fi/42ya3asxdutrz5uqg736y/wagtd-v.mp4?rlkey=8lawh05nswwthg9zos9b53wfk&st=cmqmdb15&raw=1',
     tags: [
       { label: 'Level Design' },
@@ -150,6 +159,9 @@ const projects: Project[] = [
   {
     id: 'nyxr-bot',
     title: 'NYXR Bot',
+    role: null,
+    company: null,
+    companylink: null,
     thumb: 'https://www.dropbox.com/scl/fi/9rydl28tg3zr28wdnt6nv/nyxr-bot.mp4?rlkey=wzt4u1mk9bbk7acfznxdk39xj&st=fjngntoh&raw=1',
     tags: [
       { label: 'React', isWebTag: true },
@@ -185,6 +197,9 @@ const projects: Project[] = [
   {
     id: 'virtual-zoo',
     title: 'Virtual Zoo',
+    role: null,
+    company: null,
+    companylink: null,
     thumb: 'https://www.dropbox.com/scl/fi/sozpwxykpepl3806vx9ac/vzoo.mp4?rlkey=108ob8rlotqxzod1legswvhe8&st=xxar4x1g&raw=1',
     tags: [
       { label: 'Go', isWebTag: true },
@@ -220,6 +235,9 @@ const projects: Project[] = [
   {
     id: 'astronomy-books',
     title: 'Astronomy in Books',
+    role: null,
+    company: null,
+    companylink: null,
     thumb: 'https://www.dropbox.com/scl/fi/3jwv4q4rmf972hmagaimp/aib.mp4?rlkey=zd82071rib4ns5qjjfouwjkoo&st=1gkv8y57&raw=1',
     tags: [
       { label: 'JavaScript', isWebTag: true },
@@ -255,6 +273,9 @@ const projects: Project[] = [
   {
     id: 'pokemon-tracker',
     title: 'Pokémon Unite Build Tracker',
+    role: null,
+    company: null,
+    companylink: null,
     thumb: 'https://www.dropbox.com/scl/fi/lfdbtzg243ou6jti1jbm5/walkthrupoke.mp4?rlkey=gmkgvgvtct6usp7jp9cz0j521&st=vvrin2f3&raw=1',
     tags: [
       { label: 'C#', isWebTag: true },

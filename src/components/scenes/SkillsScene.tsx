@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
 import SkillItem from '../../components/skills/SkillItem'
 import { skills, categoryTitles } from '../../data/skills'
-import { Suspense } from 'react'
-import GalaxyStars from '../effects/GalaxyStars'
 
 const SkillsScene = () => {
   // Group skills by category
@@ -44,12 +42,7 @@ const SkillsScene = () => {
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-11/12 max-w-7xl h-4/5">
-        {/* Galaxy Background - Always Rendered */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <Suspense fallback={<div className="absolute inset-0 bg-[#0a0a0a]" />}>
-            <GalaxyStars />
-          </Suspense>
-        </div>
+
         {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
           <div 
             key={category}
