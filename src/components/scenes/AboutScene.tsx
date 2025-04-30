@@ -23,7 +23,7 @@ const AboutScene = () => (
   >
 
     {/* About Card */}
-    <div className="relative w-11/12 max-w-6xl h-auto max-h-[90vh] bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+    <div className="relative w-11/12 max-w-6xl h-auto md:h-4/5 bg-[#1e1e1e]/50 backdrop-blur-md rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
       <AboutCardSparkles/>
 
       {/* Image */}
@@ -43,7 +43,7 @@ const AboutScene = () => (
           variants={textContainer}
           initial="hidden"
           animate="visible"
-          className="space-y-4 md:space-y-5 text-sm md:text-med text-[#f5f5f7] animate-[textGlow_4s_ease-in-out_infinite]"
+          className="space-y-4 md:space-y-5 text-med md:text-med text-[#f5f5f7] animate-[textGlow_4s_ease-in-out_infinite]"
         >
           
           <motion.p variants={textItem}>
