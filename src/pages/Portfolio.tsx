@@ -31,7 +31,15 @@ const Portfolio = () => {
       <div className="relative w-full h-full transition-all duration-500 ease-in-out">
         
         {/* Navigation */}
-        <nav className="fixed bottom-15 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg">
+        <nav 
+          aria-label="Main Navigation"
+          className="
+            fixed bottom-0 left-1/2 -translate-x-1/2
+            flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full
+            z-50 shadow-lg
+            pb-[env(safe-area-inset-bottom)]
+            overflow-x-automax-w-full"
+        >
           {[
             { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
             { id: 'projects', label: 'Projects', img: 'https://img.icons8.com/clouds/400/folder-invoices.png', icon: '📁' },
