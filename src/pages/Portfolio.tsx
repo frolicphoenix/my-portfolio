@@ -101,14 +101,9 @@ const Portfolio = () => {
                   >
                     ✨ Creative Technologist ✨
                   </motion.h2>
-                  <motion.p 
-                    className="mb-10"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                  >
+                  <p className="mb-10 fade-in">
                     With 3+ years' experience building video games, apps, websites, and tools, a relentless idea machine who lives at the crossroads of storytelling, design, and technology.
-                  </motion.p>
+                  </p>
                   <motion.div 
                     className="flex gap-5 mt-10"
                     initial={{ y: 20, opacity: 0 }}
