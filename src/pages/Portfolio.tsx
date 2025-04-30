@@ -112,8 +112,8 @@ const Portfolio = () => {
                           ${activeScene === item.id ? 'bg-[#ffcc4d]/20 text-[#ffcc4d]' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
                         onClick={() => {
                           setActiveScene(item.id as Scene);
-                          // Optional: close menu after selection
-                          // setIsNavVisible(false);
+                          // Close menu after selection
+                          setIsNavVisible(false);
                         }}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ 
