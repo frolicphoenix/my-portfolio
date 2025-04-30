@@ -36,6 +36,14 @@ const Portfolio = () => {
     { id: 'contact', label: 'Contact', img: 'https://img.icons8.com/clouds/400/contact.png', icon: '✉️' }
   ]
 
+  // Handler for scene changes that automatically hides the mobile nav
+  const handleSceneChange = (scene: Scene) => {
+    setActiveScene(scene)
+    if (isMobile) {
+      setIsNavVisible(false)
+    }
+  }
+
   return (
     <div className="relative w-full h-full perspective-[1000px]">
       {/* Galaxy Background - Always Rendered */}
@@ -110,11 +118,7 @@ const Portfolio = () => {
                         key={item.id}
                         className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-300
                           ${activeScene === item.id ? 'bg-[#ffcc4d]/20 text-[#ffcc4d]' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
-                        onClick={() => {
-                          setActiveScene(item.id as Scene);
-                          // Optional: close menu after selection
-                          // setIsNavVisible(false);
-                        }}
+                        onClick={() => handleSceneChange(item.id as Scene)}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ 
                           opacity: 1, 
