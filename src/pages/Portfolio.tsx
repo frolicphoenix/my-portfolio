@@ -28,7 +28,7 @@ const Portfolio = () => {
       </div>
 
       {/* Universe Container */}
-      <div className="relative bottom-20 w-full h-full transition-all duration-500 ease-in-out">
+      <div className="relative bottom-20 top-2  w-full h-full transition-all duration-500 ease-in-out">
         
         {/* Navigation */}
         <nav 
