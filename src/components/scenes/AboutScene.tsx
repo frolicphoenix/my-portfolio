@@ -27,14 +27,14 @@ const AboutScene = () => (
       <AboutCardSparkles/>
 
       {/* Image */}
-      <div className="md:w-1/3 w-full h-64 md:h-full relative overflow-hidden">
+      <div className="w-full md:w-1/3 h-64 md:h-auto relative overflow-hidden">
         <img src="/assets/img/pranjall.webp" alt="Pranjal" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"/>
         <div className="absolute inset-0 bg-gradient-to-t from-[#121212]/80 via-transparent to-transparent md:bg-gradient-to-r"/>
       </div>
 
       {/* Text */}
-      <div className="flex-1 p-8 overflow-y-auto scrollbar">
-        <h2 className="text-3xl font-bold relative inline-block mb-8 text-white">
+      <div className="flex-1 p-6 md:p-8 overflow-y-auto scrollbar max-h-[60vh] md:max-h-none">
+        <h2 className="text-2xl md:text-3xl font-bold relative inline-block mb-6 md:mb-8 text-white">
           About Me
           <div className="absolute h-[3px] w-14 bg-[#88a035] rounded left-0 -bottom-3"/>
         </h2>
@@ -43,7 +43,7 @@ const AboutScene = () => (
           variants={textContainer}
           initial="hidden"
           animate="visible"
-          className="space-y-5 text-med text-[#f5f5f7] animate-[textGlow_4s_ease-in-out_infinite]"
+          className="space-y-4 md:space-y-5 text-sm md:text-med text-[#f5f5f7] animate-[textGlow_4s_ease-in-out_infinite]"
         >
           
           <motion.p variants={textItem}>
@@ -59,19 +59,19 @@ const AboutScene = () => (
             My name is Pranjall. I build{' '}
             <SparkleWord>games</SparkleWord>,{' '}
             <SparkleWord>apps</SparkleWord>, and{' '}
-            <SparkleWord>tools</SparkleWord> where design, technology, and story meet. I’ve spent a few years working as a{' '}
+            <SparkleWord>tools</SparkleWord> where design, technology, and story meet. I've spent a few years working as a{' '}
             <SparkleWord>Game Designer</SparkleWord> and{' '}
             <SparkleWord>Full Stack Engineer</SparkleWord>, learning by doing, messing up sometimes, and figuring out things along the way. I believe in making ideas real, one code at a time.
           </motion.p>
 
           <motion.p variants={textItem}>
-            With a Bachelor’s in{' '}
-            <SparkleWord>Computer Science & Engineering</SparkleWord>, and a Master’s in{' '}
+            With a Bachelor's in{' '}
+            <SparkleWord>Computer Science & Engineering</SparkleWord>, and a Master's in{' '}
             <SparkleWord>Video Game Design</SparkleWord>, I dove deep into how systems work, how ideas are built, and how things can be shaped, tested, and improved. It gave me a strong mix of technical skills and creative thinking that I carry into everything I make.
           </motion.p>
 
           <motion.p variants={textItem}>
-            When I’m not working, I’m usually getting lost in a{' '}
+            When I'm not working, I'm usually getting lost in a{' '}
             <SparkleWord>game</SparkleWord>,{' '}
             <SparkleWord>anime</SparkleWord>,{' '}
             <SparkleWord>book</SparkleWord>, or researching{' '}
