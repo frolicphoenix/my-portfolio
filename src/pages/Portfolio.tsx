@@ -28,12 +28,12 @@ const Portfolio = () => {
       </div>
 
       {/* Universe Container */}
-      <div className="relative w-full h-full transition-all duration-500 ease-in-out">
+      <div className="relative bottom-20 w-full h-full transition-all duration-500 ease-in-out">
         
         {/* Navigation */}
         <nav 
           aria-label="Main Navigation"
-          className="fixed bottom-15 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
+          className="fixed bottom-20 left-1/2 -translate-x-1/2 flex gap-5 px-6 py-4 bg-[#121212]/80 backdrop-blur-md rounded-full z-50 shadow-lg"
         >
           {[
             { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
