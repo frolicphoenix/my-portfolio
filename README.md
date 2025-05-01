@@ -31,30 +31,6 @@ I’m Pranjal Lokhande, a creative technologist at the crossroads of storytellin
 
 ---
 
-## ✨ Features
-
-- **Home Scene**  
-  - Interactive galaxy background that reacts to mouse movement  
-  - Pulsing, olive-green aurora waves  
-  - Typewriter-style, staggered text reveals with sparkling highlights  
-- **Projects**  
-  - Filterable game & web projects with live video thumbnails (auto-play only in view via Intersection Observer)  
-  - Detailed modal for each project: video/iframe, overview, tools, features, responsibilities  
-- **About**  
-  - Profile image with parallax hover  
-  - Scrollable “About Me” card with custom sparkle canvas overlay  
-- **Skills**  
-  - Three-column, scrollable skill categories  
-  - Animated entry via Framer Motion  
-- **Contact**  
-  - Custom themed form (powered by FormSubmit.co)  
-  - Contact links using icon buttons  
-- **Responsive & Accessible**  
-  - Fully responsive Tailwind layout across mobile/tablet/desktop  
-  - Lazy-loaded images, code-split scenes, and canceled canvas loops to optimize performance  
-  - Semantic HTML, ARIA labels on nav, and keyboard-focusable controls  
-
----
 
 ## 📦 Installation & Local Dev
 
