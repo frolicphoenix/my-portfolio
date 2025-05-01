@@ -41,6 +41,6 @@ I’m Pranjal Lokhande, a creative technologist at the crossroads of storytellin
    npm install
 2. **Run locally**
    ```bash
-   npm run dev]
+   npm run dev
 
 ## Built with ❤️ by Pranjall
