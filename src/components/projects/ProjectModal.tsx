@@ -207,9 +207,12 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             
           </div>
 
-          <div className=" flex mb-5">
+          <div className="mb-5">
             {project.designDoc && (
-              <iframe className='w-25/26 h-150' src="https://docs.google.com/document/d/e/2PACX-1vSJkgj9lxDNcYDl8PptKUE8WQK-4d3pG1OIHi1Vtru21Sc5mjUfLIukphLYuzSGPd5QLS1u_h-48JB4/pub?embedded=true"></iframe>
+              <a href={project.designDoc} target="_blank" className="text-amber-400"><u><strong>Link to the attached Process Document</strong></u></a>
+            )}
+            {project.designDoc && (
+              <iframe className='w-25/26 h-150' src={project.designDoc}></iframe>
             )}
           </div>
         </div>
