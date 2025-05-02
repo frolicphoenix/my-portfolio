@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+# Pranjal Lokhande Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website showcasing game design, full-stack development, and creative projects—complete with an interactive galaxy background, sparkly highlights, and smooth 3D-like scene transitions.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Story
 
-## Expanding the ESLint configuration
+I’m Pranjal Lokhande, a creative technologist at the crossroads of storytelling, design, and code. After studying Computer Science & Engineering and earning a Master’s in Video Game Design, I’ve spent 3+ years building games, apps, websites, and tools. This portfolio captures my journey—from crafting pipelines in Unreal Engine to designing immersive web experiences—and serves as both a resume and a living demo of the interactive techniques I love.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Framework & Build**  
+  - React (with [Vite](https://vitejs.dev/) for lightning-fast dev & build)  
+  - TypeScript  
+- **Styling**  
+  - Tailwind CSS  
+  - CSS variables & `@keyframes` for subtle text glows  
+- **Animations & Effects**  
+  - Framer Motion for page transitions & staggered reveals  
+  - p5.js (via [`@p5-wrapper/react`](https://github.com/and-who/react-p5-wrapper)) for the galaxy, aurora, and sparkle canvases  
+  - Custom canvas effects in plain Canvas 2D (About-card sparkles)  
+- **Icons & Images**  
+  - Icons8 (self-hosted & optimized to WebP)  
+  - Tailwind’s `bg-[url()]` for dynamic backgrounds  
+- **Deployment**  
+  - Hosted on Vercel  
+  - CI/CD via GitHub Actions (if applicable)  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+
+## 📦 Installation & Local Dev
+
+1. **Clone & Install**  
+   ```bash
+   git clone https://github.com/your-username/portfolio.git
+   cd portfolio
+   npm install
+2. **Run locally**
+   ```bash
+   npm run dev
+
+## Built with ❤️ by Pranjall
