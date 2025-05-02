@@ -212,11 +212,11 @@ const Portfolio = () => {
   }, [])
 
   const navItems = [
-    { id: 'home', label: 'Home', img: 'https://img.icons8.com/clouds/400/home.png' , icon: '🏠' },
-    { id: 'projects', label: 'Projects', img: 'https://img.icons8.com/clouds/400/folder-invoices.png', icon: '📁' },
-    { id: 'about', label: 'About', img: 'https://img.icons8.com/clouds/400/about.png', icon: '💁🏻‍♀️' },
-    { id: 'skills', label: 'Skills', img: 'https://img.icons8.com/clouds/400/gear.png', icon: '⚙️' },
-    { id: 'contact', label: 'Contact', img: 'https://img.icons8.com/clouds/400/contact.png', icon: '✉️' }
+    { id: 'home', label: 'Home', img: 'navigation/home.webp' , icon: '🏠' },
+    { id: 'projects', label: 'Projects', img: 'navigation/folder-invoices.webp', icon: '📁' },
+    { id: 'about', label: 'About', img: 'navigation/about.webp', icon: '💁🏻‍♀️' },
+    { id: 'skills', label: 'Skills', img: 'navigation/gear.webp', icon: '⚙️' },
+    { id: 'contact', label: 'Contact', img: 'navigation/contact.webp', icon: '✉️' }
   ]
 
   // Performance settings are combined to create a clear hierarchy
@@ -447,14 +447,9 @@ const Portfolio = () => {
                     ✨ Creative Technologist ✨
                   </motion.h2>
                   
-                  <motion.p 
-                    className="mb-10"
-                    initial={actualDisabledAnimations ? { opacity: 1 } : { y: 20, opacity: 0 }}
-                    animate={actualDisabledAnimations ? { opacity: 1 } : { y: 0, opacity: 1 }}
-                    transition={{ delay: actualDisabledAnimations ? 0 : 0.6, duration: actualDisabledAnimations ? 0.3 : 0.8 }}
-                  >
+                  <p className="mb-10">
                     With 3+ years' experience building video games, apps, websites, and tools, a relentless idea machine who lives at the crossroads of storytelling, design, and technology.
-                  </motion.p>
+                  </p>
                   
                   <motion.div 
                     className="flex flex-wrap justify-center gap-3 md:gap-5 mt-10"
@@ -463,12 +458,12 @@ const Portfolio = () => {
                     transition={{ delay: actualDisabledAnimations ? 0 : 0.8, duration: actualDisabledAnimations ? 0.3 : 0.8 }}
                   >
                     {[
-                      { href: "mailto:pranjalmlokhande@gmail.com", img: "https://img.icons8.com/bubbles/200/apple-mail.png", icon: "M" },
-                      { href: "https://www.linkedin.com/in/pranjallokhande/", img: "https://img.icons8.com/bubbles/200/linkedin.png", icon: "L" },
-                      { href: "https://github.com/frolicphoenix", img: "https://img.icons8.com/bubbles/200/github.png", icon: "G" },
-                      { href: "https://www.youtube.com/@theunrealdesigner", img: "https://img.icons8.com/bubbles/200/youtube-squared.png", icon: "Y" },
-                      { href: "https://medium.com/@pranjalmlokhande", img: "https://img.icons8.com/bubbles/200/medium-new.png", icon: "M" },
-                      { href: "https://theunrealdesigner.tumblr.com/", img: "https://img.icons8.com/bubbles/200/tumblr.png", icon: "T" }
+                      { href: "mailto:pranjalmlokhande@gmail.com", img: "socials/apple-mail.webp", icon: "M" },
+                      { href: "https://www.linkedin.com/in/pranjallokhande/", img: "socials/linkedin.webp", icon: "L" },
+                      { href: "https://github.com/frolicphoenix", img: "socials/github.webp", icon: "G" },
+                      { href: "https://www.youtube.com/@theunrealdesigner", img: "socials/youtube-squared.webp", icon: "Y" },
+                      { href: "https://medium.com/@pranjalmlokhande", img: "socials/medium-new.webp", icon: "M" },
+                      { href: "https://theunrealdesigner.tumblr.com/", img: "socials/tumblr.webp", icon: "T" }
                     ].map((link, i) => (
                       <a 
                         key={i} 
