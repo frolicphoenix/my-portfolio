@@ -1,12 +1,12 @@
 # Pranjal Lokhande Portfolio
 
-A personal portfolio website showcasing game design, full-stack development, and creative projects—complete with an interactive galaxy background, sparkly highlights, and smooth 3D-like scene transitions.
+A personal portfolio website showcasing game design, full-stack development, and creative projects, complete with an interactive galaxy background, sparkly highlights, and smooth 3D-like scene transitions.
 
 ---
 
 ## 🌟 Story
 
-I’m Pranjal Lokhande, a creative technologist at the crossroads of storytelling, design, and code. After studying Computer Science & Engineering and earning a Master’s in Video Game Design, I’ve spent 3+ years building games, apps, websites, and tools. This portfolio captures my journey—from crafting pipelines in Unreal Engine to designing immersive web experiences—and serves as both a resume and a living demo of the interactive techniques I love.
+I’m Pranjal Lokhande, a creative technologist at the crossroads of storytelling, design, and code. After studying Computer Science & Engineering and earning a Master’s in Video Game Design, I’ve spent 3+ years building games, apps, websites, and tools. This portfolio captures my journey from crafting pipelines in Unreal Engine to designing immersive web experiences, and serves as both a resume and a living demo of the interactive techniques I love.
 
 ---
 
