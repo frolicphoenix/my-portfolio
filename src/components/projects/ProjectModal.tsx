@@ -150,6 +150,11 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
                   className="w-full h-full object-cover"
                   preload="metadata"
                 />
+              ) : project.thumbimg ? (
+                <img
+                  src={project.thumbimg}
+                  className="w-full h-full object-cover"
+                />
               ) : null}                       
             </div>
             <div className="col-span-3 md:col-span-1 space-y-3">
@@ -218,12 +223,14 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
 
             <div className="mb-5">
-              <h3 className="text-xl text-[#88a035] mb-2">Features</h3>
+            {project.features && (
+              <><h3 className="text-xl text-[#88a035] mb-2">Features</h3>
               <ul className="list-disc pl-5 space-y-1">
                 {(project.features ?? []).map((feature, index) => (
                   <li key={index} className="leading-relaxed">{feature}</li>
                 ))}
-              </ul>
+              </ul></>
+            )}
             </div>
 
             <div className="mb-5">
@@ -234,7 +241,7 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
                     <li key={index} className="leading-relaxed">{feature}</li>
                   ))}
                 </ul></>
-                )}
+              )}
             </div>
             
           </div>

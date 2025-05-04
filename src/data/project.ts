@@ -1,6 +1,7 @@
 export type ProjectTool = 
   | 'unreal-engine' 
   | 'fortnite' 
+  |  'game-design'
   | 'level-design' 
   | 'blueprints' 
   | 'multiplayer'
@@ -60,7 +61,8 @@ export const gameTools: { id: ProjectTool; label: string }[] = [
   { id: 'blueprints', label: 'Blueprints' },
   { id: 'multiplayer', label: 'Multiplayer' },
   { id: 'unity', label: 'Unity' },
-  { id: 'gamejam', label: 'Game Jam' }
+  { id: 'gamejam', label: 'Game Jam' },
+  { id: 'csharp', label: 'C#' },
 ];
 
 export const webTools: { id: ProjectTool; label: string }[] = [
@@ -182,22 +184,24 @@ const projects: Project[] = [
   {
     id: 'prelude',
     title: "Prelude",
-    role: 'Game Owner, Level Designer',
-    company: null,
-    companylink: null,
+    role: 'Game Designer, Level Designer',
+    company: "Brackey's Game Jam 2024",
+    companylink: "https://itch.io/jam/brackeys-12/rate/2961551",
     thumb: null,
     thumbimg: 'https://www.dropbox.com/scl/fi/upggtqbykhcudjkiwa7bd/bLlGF4.webp?rlkey=d3wcbbjw92mrwuhd8ucbwciou&st=4bb1ufy7&raw=1',
     tags: [
-      { label: 'Game Owner' },
+      { label: 'Unity' },
+      { label: 'C#' },
+      { label: 'Game Design' },
       { label: 'Level Design' },
       { label: 'Game Jam' },
 
     ],
     description: 'Players explore a peaceful dreamscape in  a 3D adventure, but beware—the storm is coming.',
-    tools: ['level-design', 'gamejam'],
+    tools: ['csharp', 'unity', 'level-design', 'gamejam'],
     category: 'game',
     detailedDescription: 'A story-driven exploration game that is on the verge of melting away. The game focuses on mental health and the delicate nature of human emotions. Players embark on a surreal journey through the subconscious mind of a troubled protagonist, unraveling their deepest fears, memories, and emotions.',
-    technologies: 'Unreal Engine, Blueprints, Level Design',
+    technologies: 'Unity, C#, Level Design',
     features: null,
     responsibilities: null,
     github: null,
@@ -208,7 +212,7 @@ const projects: Project[] = [
     medium: null,
     youtube: 'https://www.youtube.com/embed/AdCqD0Pu9bg?si=YWBNxJs-KKcs3dgO',
     bgimg: 'https://www.dropbox.com/scl/fi/upggtqbykhcudjkiwa7bd/bLlGF4.webp?rlkey=d3wcbbjw92mrwuhd8ucbwciou&st=4bb1ufy7&raw=1',
-    genre: 'Top-down Multiplayer Shooter',
+    genre: 'Adventure, Exploration',
     platform: 'PC',
     duration: '1 Week',
     teamsize: null,
@@ -216,6 +220,89 @@ const projects: Project[] = [
     gallery: [
       'https://www.dropbox.com/scl/fi/5c8jn9hj9q1hkmmyvxjkz/uHbwPJ.png?rlkey=wz8go9enptqroqwckvionws3y&st=7gwbg8g0&raw=1',
       'https://www.dropbox.com/scl/fi/uwnktaig4xbnky73v15cw/VMD27X.png?rlkey=r0qig8mqc45i8sziu04vmlze3&st=h3a8cft5&raw=1'
+    ]
+  },
+  {
+    id: 'memories',
+    title: "Project Memories",
+    role: 'Game Owner, Level Designer',
+    company: "TheXPlace Game Jam 2023",
+    companylink: "https://app2.thexplace.ai/events/01H0G0PM35GY5MM37HFF2KVPPC/games/01H2XDN1KK3NAZ6F1AWVTDHST0?vipcode=Q_Summer23",
+    thumb: 'https://www.dropbox.com/scl/fi/ufulbvwwb38piy646fzkk/pm.mp4?rlkey=iedldczwg4wuez0f1y84eyp6a&st=oamb36hy&raw=1',
+    thumbimg: null,
+    tags: [
+      { label: 'Unreal Engine' },
+      { label: 'Level Design' },
+      { label: 'Game Jam' },
+    ],
+    description: "The game focuses on mental health and the delicate nature of human emotions.",
+    tools: ['unreal-engine', 'game-design', 'level-design', 'gamejam'],
+    category: 'game',
+    detailedDescription: "A story-driven exploration game that is on the verge of melting away. The game focuses on mental health and the delicate nature of human emotions. Players embark on a surreal journey through the subconscious mind of a troubled protagonist, unraveling their deepest fears, memories, and emotions.",
+    technologies: 'Unreal Engine, Blueprints, Level Design',
+    features: null,
+    responsibilities: null,
+    github: null,
+    itchio: 'https://craitter.itch.io/memories',
+    liveDemo: null,
+    steam: null,
+    designDoc: null,
+    medium: null,
+    youtube: 'https://www.youtube.com/embed/b8af_7vgpZs?si=Ui6cImbnjoD4JKVz',
+    bgimg: 'https://www.dropbox.com/scl/fi/xyozrwe9ilbulmdbdcvo5/gencraft-pm.webp?rlkey=qkvioszizrfm4t0edfm1qderu&st=9u1lv86i&raw=1',
+    genre: 'Adventure, Exploration',
+    platform: 'PC',
+    duration: '1 Week',
+    teamsize: "9",
+    released: null,
+    gallery: [
+      'https://www.dropbox.com/scl/fi/ssphjp3omkool4ent2gnn/ss1.webp?rlkey=yyy9sqlyq24g7sh2ke71kqgdu&st=b08qaczw&raw=1',
+      'https://www.dropbox.com/scl/fi/qnnnczzwmi05ncl8d2ghy/ss2.webp?rlkey=mi582jho2bnre1safecsatp61&st=6wnnriuo&raw=1',
+      'https://www.dropbox.com/scl/fi/azq1m9eqq4ig81x2s4vei/ss3.webp?rlkey=om698y9coefvws34aozrlgqq1&st=nyaea3bu&raw=1',
+      'https://www.dropbox.com/scl/fi/vich1a1xzqv5yyt9fczpn/ss4.webp?rlkey=yrxd92jhg3jng829lfnw2gtca&st=usxbr4cl&raw=1',
+      'https://www.dropbox.com/scl/fi/7ea2txux9m6fa6ej1yxr9/ss5.webp?rlkey=497fqb68j1db8f0nr0meezllu&st=2rscz77f&raw=1'
+    ]
+  },
+  {
+    id: 'hope',
+    title: "Hope",
+    role: 'Game Designer, Level Designer, Game Artist',
+    company: "Brackey's Game Jam 2022",
+    companylink: "https://itch.io/jam/brackeys-7/rate/1420938",
+    thumb: null,
+    thumbimg: 'https://www.dropbox.com/scl/fi/jwuw7avgoygozysoiovqa/hope.png?rlkey=axi34cvyvr89ddc6vry3go2gp&st=m5lqbt10&raw=1',
+    tags: [
+      { label: 'Unity' },
+      { label: 'C#' },
+      { label: 'Game Art' },
+      { label: 'Level Design' },
+      { label: 'Game Jam' },
+
+    ],
+    description: "Players find and use the doors as an escape from reality and move between the phases of the character's life. Finding their way back to reality.",
+    tools: ['unity', 'csharp', 'game-design', 'level-design', 'gamejam'],
+    category: 'game',
+    detailedDescription: "In a dream that feels unsettlingly real, you must navigate through the vivid ups and downs of your life, confronting past traumas and fears. By finding and using symbolic doors to transition between different life phases, you seek to escape despair and rediscover hope, ultimately returning to reality.",
+    technologies: 'Unity, C#, Level Design',
+    features: null,
+    responsibilities: null,
+    github: null,
+    itchio: 'https://axeltornado.itch.io/hope',
+    liveDemo: null,
+    steam: null,
+    designDoc: null,
+    medium: null,
+    youtube: null,
+    bgimg: 'https://www.dropbox.com/scl/fi/vmkf3ttvhqeakkqxs2y16/ss1.png?rlkey=87m0gns4vv7hiqnbg479cm7yu&st=aeyeqc34&raw=1',
+    genre: 'Exploration',
+    platform: 'PC',
+    duration: '1 Week',
+    teamsize: null,
+    released: null,
+    gallery: [
+      'https://www.dropbox.com/scl/fi/vmkf3ttvhqeakkqxs2y16/ss1.png?rlkey=87m0gns4vv7hiqnbg479cm7yu&st=aeyeqc34&raw=1',
+      'https://www.dropbox.com/scl/fi/aab2fjjmwi0dzsada2zfr/ss2.png?rlkey=dido0f6cogcv3bdj6xaikqika&st=pee0ubhs&raw=1',
+      'https://www.dropbox.com/scl/fi/prg15dsbgu2o04jldddin/ss3.png?rlkey=7wp1ltb0jsozct63zjayr018y&st=jcimy4dv&raw=1'
     ]
   },
 
