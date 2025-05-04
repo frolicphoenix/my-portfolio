@@ -1,5 +1,6 @@
 import { Project } from '../../data/project';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -8,6 +9,8 @@ interface ProjectModalProps {
 
 const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
   if (!project) return null
+
+const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
 
   return (
     <motion.div 
@@ -24,6 +27,21 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         exit={{ scale: 0.95, y: 50 }}
         onClick={e => e.stopPropagation()}
       >
+
+        {lightboxIndex !== null && project.gallery && (
+          <div
+            className='fixed inset-0 bg-black/90 z-60 flex items-center justify-center p4'
+            onClick={() => setLightboxIndex(null)}
+          >
+            <img
+             src={project.gallery[lightboxIndex]}
+             alt={`Zoomed ${project.title} #${lightboxIndex+1}`}
+             className="max-w-full max-h-full rounded-lg shadow-2xl"
+            />
+
+          </div>
+        )}
+
         <div className="flex justify-between items-center p-7 border-b border-white/10 bg-cover" style={{ backgroundImage: `url(${project.bgimg})` }}>
          
           <h2 className="text-2xl font-semibold">{project.title}</h2>
@@ -44,47 +62,61 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
               </a>
             )}
             {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2"
-              >
-                <img
-                  src="https://img.icons8.com/dusk/200/github.png"
-                  alt="GitHub"
-                  className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
-                />
-              </a>
-            )}
-            {project.liveDemo && (
-              <a
-                href={project.liveDemo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2"
-              >
-                <img
-                  src="https://img.icons8.com/dusk/64/internet--v1.png"
-                  alt="Live Demo"
-                  className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
-                />
-              </a>
-            )}
-            {project.steam && (
-              <a
-                href={project.steam}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2"
-              >
-                <img
-                  src="https://img.icons8.com/plasticine/400/steam.png"
-                  alt="Steam"
-                  className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
-                />
-              </a>
-            )}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="platform/github.webp"
+                alt="GitHub"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+          {project.liveDemo && (
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="platform/internet--v1.webp"
+                alt="Live Demo"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+          {project.steam && (
+            <a
+              href={project.steam}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="platform/steam.webp"
+                alt="Steam"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+          {project.itchio && (
+            <a
+              href={project.itchio}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="platform/icons8-itch-io-100.webp"
+                alt="Itchio"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
           </div>
           <button 
             className="text-2xl transition-all hover:text-[#88a035] hover:rotate-90"
@@ -188,7 +220,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             <div className="mb-5">
               <h3 className="text-xl text-[#88a035] mb-2">Features</h3>
               <ul className="list-disc pl-5 space-y-1">
-                {project.features.map((feature, index) => (
+                {(project.features ?? []).map((feature, index) => (
                   <li key={index} className="leading-relaxed">{feature}</li>
                 ))}
               </ul>
@@ -206,6 +238,24 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             </div>
             
           </div>
+          
+          <div className="flex-1 overflow-y-auto p-10">
+          {(project.gallery ?? []).length > 0 && (
+            <div className="mb-6 overflow-x-auto flex gap-4 snap-x snap-mandatory px-2">
+              {(project.gallery ?? []).map((src, idx) => (
+                <img
+                  key={idx}
+                  src={src}
+                  alt={`${project.title} screenshot ${idx + 1}`}
+                  loading="lazy"
+                  onClick={() => setLightboxIndex(idx)}
+                  className="snap-start flex-shrink-0 w-60 h-40 object-cover rounded-lg shadow-lg cursor-zoom-in"
+                />
+              ))}
+            </div>
+          )}
+          </div>
+          
 
           <div className="mb-5">
             {project.designDoc && (

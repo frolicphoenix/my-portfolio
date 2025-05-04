@@ -47,6 +47,13 @@ const ProjectCard = memo(({ project, onClick }: ProjectCardProps) => {
             className="w-full h-full object-cover"
           />
         )}
+        {project.thumbimg && (
+          <img
+            src={project.thumbimg}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
       <div className="flex flex-col">
         <h3 className="text-lg font-medium mb-1">{project.title}</h3>
@@ -82,7 +89,7 @@ const ProjectCard = memo(({ project, onClick }: ProjectCardProps) => {
               className="p-2"
             >
               <img
-                src="https://img.icons8.com/dusk/200/github.png"
+                src="platform/github.webp"
                 alt="GitHub"
                 className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
               />
@@ -96,7 +103,7 @@ const ProjectCard = memo(({ project, onClick }: ProjectCardProps) => {
               className="p-2"
             >
               <img
-                src="https://img.icons8.com/dusk/64/internet--v1.png"
+                src="platform/internet--v1.webp"
                 alt="Live Demo"
                 className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
               />
@@ -110,8 +117,22 @@ const ProjectCard = memo(({ project, onClick }: ProjectCardProps) => {
               className="p-2"
             >
               <img
-                src="https://img.icons8.com/plasticine/400/steam.png"
+                src="platform/steam.webp"
                 alt="Steam"
+                className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
+              />
+            </a>
+          )}
+          {project.itchio && (
+            <a
+              href={project.itchio}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2"
+            >
+              <img
+                src="platform/icons8-itch-io-100.webp"
+                alt="Itchio"
                 className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
               />
             </a>
