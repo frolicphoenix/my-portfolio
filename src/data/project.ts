@@ -305,6 +305,41 @@ const projects: Project[] = [
       'https://www.dropbox.com/scl/fi/prg15dsbgu2o04jldddin/ss3.png?rlkey=7wp1ltb0jsozct63zjayr018y&st=jcimy4dv&raw=1'
     ]
   },
+  {
+    id: 'das',
+    title: "Dreams and Sunflowers",
+    role: 'Game Owner, Game Designer',
+    company: "Zygobot Studios",
+    companylink: null,
+    thumb: null,
+    thumbimg: 'https://www.dropbox.com/scl/fi/be3rsdeie0u7h5smy25as/das.webp?rlkey=p1jbwqtktq4va2rj2qm2hqohw&st=12dwtcnw&raw=1',
+    tags: [
+      { label: 'Unity' },
+      { label: 'C#' },
+      { label: 'Game Designer' },
+      { label: 'Archived' },
+    ],
+    description: "Dreams and Sunflowers is a contemplative first-person narrative puzzle game where players step into the role of Amelia Gray, a wandering object restorer with a mysterious connection to the items she repairs.",
+    tools: ['unity', 'csharp', 'game-design', 'level-design', 'gamejam'],
+    category: 'game',
+    detailedDescription: "Dreams and Sunflowers is a contemplative first-person narrative puzzle game where players step into the role of Amelia Gray, a wandering object restorer with a mysterious connection to the items she repairs. Set in the quaint coastal town of Aria in the year 2081, Amelia has established a temporary workshop where she mends cherished possessions for the local residents, uncovering emotional stories hidden within each broken object.",
+    technologies: 'Unity, C#',
+    features: null,
+    responsibilities: null,
+    github: null,
+    itchio: null,
+    liveDemo: null,
+    steam: null,
+    designDoc: 'https://docs.google.com/document/d/e/2PACX-1vTp73A7cG0kAcwy631jt1vbWNQuPqbayG7la2HgIhXZf6ytcmMSJEHz4LYXXxVzUq8203SC_Povsp4s/pub?embedded=true',
+    medium: null,
+    youtube: null,
+    bgimg: 'https://www.dropbox.com/scl/fi/be3rsdeie0u7h5smy25as/das.webp?rlkey=p1jbwqtktq4va2rj2qm2hqohw&st=12dwtcnw&raw=1',
+    genre: 'Exploration, Visual Novel, Narrative',
+    platform: 'PC',
+    duration: null,
+    teamsize: null,
+    released: null
+  },
 
 
   // WEB PROJECTS
