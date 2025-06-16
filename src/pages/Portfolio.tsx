@@ -1,5 +1,6 @@
 import { useState, Suspense, lazy, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const ProjectsScene = lazy(() => import('../components/scenes/ProjectsScene'))
 const AboutScene    = lazy(() => import('../components/scenes/AboutScene'))
@@ -13,7 +14,20 @@ const GalaxyStars = lazy(() => import('../components/effects/GalaxyStars'))
 type Scene = 'home' | 'projects' | 'about' | 'skills' | 'contact'
 
 const Portfolio = () => {
-  const [activeScene, setActiveScene] = useState<Scene>('home')
+  const navigate = useNavigate()
+  const location = useLocation()
+  
+  // Get initial scene from URL
+  const getSceneFromPath = (pathname: string): Scene => {
+    const path = pathname.slice(1) // Remove leading slash
+    if (path === '' || path === 'home') return 'home'
+    if (['projects', 'about', 'skills', 'contact'].includes(path)) {
+      return path as Scene
+    }
+    return 'home' // Default fallback
+  }
+
+  const [activeScene, setActiveScene] = useState<Scene>(getSceneFromPath(location.pathname))
   const [isNavVisible, setIsNavVisible] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [reduceAnimations, setReduceAnimations] = useState(false) 
@@ -23,6 +37,24 @@ const Portfolio = () => {
   const frameCountRef = useRef(0)
   const lastFrameTimeRef = useRef(Date.now())
   const performanceCheckRef = useRef<number | null>(null)
+
+  // Sync activeScene with URL changes
+  useEffect(() => {
+    const newScene = getSceneFromPath(location.pathname)
+    setActiveScene(newScene)
+  }, [location.pathname])
+
+  // Handle scene changes and update URL
+  const handleSceneChange = (scene: Scene) => {
+    setActiveScene(scene)
+    const path = scene === 'home' ? '/' : `/${scene}`
+    navigate(path)
+    
+    // Close mobile menu after selection
+    if (isMobile) {
+      setIsNavVisible(false)
+    }
+  }
 
   // Safety timers to prevent browser crashes
   useEffect(() => {
@@ -340,11 +372,7 @@ const Portfolio = () => {
                         key={item.id}
                         className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-300
                           ${activeScene === item.id ? 'bg-[#ffcc4d]/20 text-[#ffcc4d]' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
-                        onClick={() => {
-                          setActiveScene(item.id as Scene);
-                          // Close menu after selection
-                          setIsNavVisible(false);
-                        }}
+                        onClick={() => handleSceneChange(item.id as Scene)}
                         initial={actualDisabledAnimations ? { opacity: 1 } : { opacity: 0, x: 20 }}
                         animate={actualDisabledAnimations ? { opacity: 1 } : { 
                           opacity: 1, 
@@ -385,7 +413,7 @@ const Portfolio = () => {
                 aria-label={`Navigate to ${item.label}`}
                 className={`w-12 h-12 flex items-center justify-center rounded transition-all duration-300 relative group
                   ${activeScene === item.id ? 'bg-[#ffcc4d] text-white' : 'bg-transparent text-[#f5f5f7] hover:bg-white/10'}`}
-                onClick={() => setActiveScene(item.id as Scene)}
+                onClick={() => handleSceneChange(item.id as Scene)}
               >
                 <img
                   src={item.img}
