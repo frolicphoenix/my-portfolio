@@ -21,7 +21,8 @@ const Portfolio = () => {
   const getSceneFromPath = (pathname: string): Scene => {
     const path = pathname.slice(1) // Remove leading slash
     if (path === '' || path === 'home') return 'home'
-    if (['projects', 'about', 'skills', 'contact'].includes(path)) {
+    if (path.startsWith('projects')) return 'projects' // Handle /projects and /projects/:id
+    if (['about', 'skills', 'contact'].includes(path)) {
       return path as Scene
     }
     return 'home' // Default fallback

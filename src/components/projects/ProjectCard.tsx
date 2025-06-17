@@ -32,10 +32,10 @@ const ProjectCard = memo(({ project, onClick }: ProjectCardProps) => {
   return (
     <div 
       ref={containerRef}
-      className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 bg-[#121212]/60 rounded-lg p-4 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:bg-[#1e1e1e]/80 hover:shadow-lg"
+      className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-4 bg-[#121212]/60 rounded-lg p-4 transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:bg-[#1e1e1e]/80 hover:shadow-lg"
       onClick={onClick}
     >
-      <div className="w-full md:w-[200px] h-auto md:h-30 rounded overflow-hidden">
+      <div className="w-full md:w-[300px] h-auto md:h-50 rounded overflow-hidden">
         {project.thumb && (
           <video
             ref={videoRef}

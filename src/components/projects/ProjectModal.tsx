@@ -8,9 +8,19 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+  const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
+
   if (!project) return null
 
-const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
+  // Handle close with navigation
+  const handleClose = () => {
+    onClose()
+  }
+
+  // Handle backdrop click
+  const handleBackdropClick = () => {
+    onClose()
+  }
 
   return (
     <motion.div 
@@ -18,7 +28,7 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onClick={onClose}
+      onClick={handleBackdropClick}
     >
       <motion.div 
         className="w-11/12 max-w-5xl max-h-[90vh] bg-[#1e1e1e]/95 rounded-2xl overflow-hidden flex flex-col"
@@ -53,6 +63,7 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2"
+                onClick={e => e.stopPropagation()}
               >
                 <img
                   src="https://img.icons8.com/external-others-pike-picture/100/external-Documentation-logistics-others-pike-picture-2.png"
@@ -81,9 +92,10 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
               target="_blank"
               rel="noopener noreferrer"
               className="p-2"
+              onClick={e => e.stopPropagation()}
             >
               <img
-                src="platform/internet--v1.webp"
+                src="/platform/internet--v1.webp"
                 alt="Live Demo"
                 className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
               />
@@ -95,9 +107,10 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
               target="_blank"
               rel="noopener noreferrer"
               className="p-2"
+              onClick={e => e.stopPropagation()}
             >
               <img
-                src="platform/steam.webp"
+                src="/platform/steam.webp"
                 alt="Steam"
                 className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
               />
@@ -109,9 +122,10 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
               target="_blank"
               rel="noopener noreferrer"
               className="p-2"
+              onClick={e => e.stopPropagation()}
             >
               <img
-                src="platform/icons8-itch-io-100.webp"
+                src="/platform/icons8-itch-io-100.webp"
                 alt="Itchio"
                 className="w-10 h-10 hover:bg-amber-400 hover:rounded-4xl"
               />
@@ -120,7 +134,7 @@ const [lightboxIndex, setLightboxIndex] = useState<number|null>(null);
           </div>
           <button 
             className="text-2xl transition-all hover:text-[#88a035] hover:rotate-90"
-            onClick={onClose}
+            onClick={handleClose}
           >
             &times;
           </button>

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Portfolio from './pages/Portfolio'
 
 function App() {
@@ -7,11 +7,12 @@ function App() {
       <Route path="/" element={<Portfolio />} />
       <Route path="/home" element={<Portfolio />} />
       <Route path="/projects" element={<Portfolio />} />
+      <Route path="/projects/:projectId" element={<Portfolio />} />
       <Route path="/about" element={<Portfolio />} />
       <Route path="/skills" element={<Portfolio />} />
       <Route path="/contact" element={<Portfolio />} />
 
-      <Route path="*" element={<Navigate to="/" replace />} />
+      {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
     </Routes>
   )
 }
